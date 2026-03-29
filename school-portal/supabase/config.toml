@@ -1,0 +1,6 @@
+# Minimal config for local `supabase db reset` + seed.
+# Run `supabase init` in this folder for a full file, or link a project with `supabase link`.
+
+[db.seed]
+enabled = true
+sql_paths = ["./seed.sql"]
