@@ -1,7 +1,8 @@
+"use client";
+
 import Hero from "@/components/site/Hero";
 import FeatureGrid from "@/components/site/FeatureGrid";
 import InteractiveScreensSection from "@/components/site/InteractiveScreensSection";
-import AccessibilityPanel from "@/components/accessibility/AccessibilityPanel";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -34,7 +35,7 @@ import {
 } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { Link } from "react-router-dom";
+import Link from "next/link";
 import { brand } from "@config/brand";
 
 const revealVariants = {
@@ -113,10 +114,10 @@ const Index = () => {
 
       {/* Inline login/register anchors for smooth scroll from hero */}
       <section id="register" className="sr-only" aria-hidden>
-        <Link to="/register" />
+        <Link href="/register" />
       </section>
       <section id="login" className="sr-only" aria-hidden>
-        <Link to="/login" />
+        <Link href="/login" />
       </section>
 
       {/* About Section */}
@@ -549,7 +550,7 @@ const Index = () => {
                 whileTap={{ scale: 0.95 }}
                 transition={{ duration: 0.2 }}
               >
-                <Link to="/register">
+                <Link href="/register">
                   <Button className="h-14 px-8 text-lg bg-brand hover:bg-brand-dark text-white font-semibold rounded-xl shadow-brand-shadow hover:shadow-xl transition-all duration-300">
                     <Rocket className="w-5 h-5 mr-2" />
                     Начать бесплатно

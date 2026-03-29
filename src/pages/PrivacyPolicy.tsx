@@ -1,3 +1,5 @@
+"use client";
+
 import { useEffect } from "react";
 import { pageTitle } from "@/lib/page-title";
 

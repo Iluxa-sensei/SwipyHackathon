@@ -1,3 +1,5 @@
+"use client";
+
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { pageTitle } from "@/lib/page-title";
 import { Canvas, useFrame } from "@react-three/fiber";
@@ -15,10 +17,10 @@ type ChatMessage = {
   content: string;
 };
 
-const OPENAI_API_KEY = import.meta.env.VITE_OPENAI_API_KEY as string | undefined;
-const OPENAI_MODEL = (import.meta.env.VITE_OPENAI_MODEL as string | undefined) || "gpt-4o-mini";
-const ELEVENLABS_API_KEY = import.meta.env.VITE_ELEVENLABS_API_KEY as string | undefined;
-const ELEVENLABS_VOICE_ID = (import.meta.env.VITE_ELEVENLABS_VOICE_ID as string | undefined) || "21m00Tcm4TlvDq8ikWAM"; // default sample voice
+const OPENAI_API_KEY = process.env.NEXT_PUBLIC_OPENAI_API_KEY as string | undefined;
+const OPENAI_MODEL = (process.env.NEXT_PUBLIC_OPENAI_MODEL as string | undefined) || "gpt-4o-mini";
+const ELEVENLABS_API_KEY = process.env.NEXT_PUBLIC_ELEVENLABS_API_KEY as string | undefined;
+const ELEVENLABS_VOICE_ID = (process.env.NEXT_PUBLIC_ELEVENLABS_VOICE_ID as string | undefined) || "21m00Tcm4TlvDq8ikWAM"; // default sample voice
 const AVATAR_URL = "https://models.readyplayer.me/68960b2c1447156c3f25a765.glb";
 
 // (kept single implementation below)
@@ -418,7 +420,7 @@ function AvatarModel({ isTalking }: AvatarModelProps) {
         }
       }
     });
-    if (import.meta.env.DEV) {
+    if (process.env.NODE_ENV === "development") {
       const first = morphMeshesRef.current[0];
       const names = first?.morphTargetDictionary ? Object.keys(first.morphTargetDictionary) : [];
       // eslint-disable-next-line no-console
@@ -605,7 +607,7 @@ function AvatarModel({ isTalking }: AvatarModelProps) {
 
 async function fetchOpenAI(messages: Array<{ role: string; content: string }>): Promise<string> {
   if (!OPENAI_API_KEY) {
-    throw new Error("Не указан ключ OpenAI. Добавьте VITE_OPENAI_API_KEY в .env");
+    throw new Error("Не указан ключ OpenAI. Добавьте NEXT_PUBLIC_OPENAI_API_KEY в .env.local");
   }
   const res = await fetch("https://api.openai.com/v1/chat/completions", {
     method: "POST",
@@ -1199,7 +1201,7 @@ const StudentAIChat = () => {
         <div className="mt-8 text-center text-sm text-gray-500">
           {!OPENAI_API_KEY && (
             <p className="text-red-500 mb-2">
-              ⚠️ Внимание: не найден VITE_OPENAI_API_KEY. Добавьте ключ в `.env` файл.
+              ⚠️ Внимание: не найден NEXT_PUBLIC_OPENAI_API_KEY. Добавьте ключ в `.env.local`.
             </p>
           )}
           {!sttSupported && (

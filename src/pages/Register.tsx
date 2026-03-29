@@ -1,5 +1,7 @@
+"use client";
+
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -8,7 +10,7 @@ import { ArrowLeft, Eye, EyeOff, Mail, Lock, User, GraduationCap, Calendar, Phon
 import { pageTitle } from "@/lib/page-title";
 
 const Register = () => {
-  const navigate = useNavigate();
+  const router = useRouter();
   const [role, setRole] = useState<string>("student");
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
@@ -95,7 +97,7 @@ const Register = () => {
     // Имитация загрузки
     setTimeout(() => {
       setIsLoading(false);
-      navigate(`/dashboard/${role}`);
+      router.push(`/dashboard/${role}`);
     }, 1500);
   };
 
@@ -122,7 +124,7 @@ const Register = () => {
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.5 }}
           type="button"
-          onClick={() => navigate(-1)}
+          onClick={() => router.back()}
           className="mb-8 flex items-center gap-2 text-sm text-muted-foreground hover:text-brand transition-colors group"
         >
           <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />

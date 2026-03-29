@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import Link from "next/link";
 import { Instagram, Linkedin, MessageCircle } from "lucide-react";
 import { brand } from "@config/brand";
 
@@ -29,7 +29,7 @@ const Footer = () => {
           <h3 className="text-sm font-semibold mb-3 text-brand tracking-tight">Правовая информация</h3>
           <ul className="space-y-2 text-sm text-muted-foreground">
             <li>
-              <Link to="/privacy" className="hover:text-brand transition-colors">
+              <Link href="/privacy" className="hover:text-brand transition-colors">
                 Политика конфиденциальности
               </Link>
             </li>

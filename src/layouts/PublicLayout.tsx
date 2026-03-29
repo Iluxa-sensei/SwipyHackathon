@@ -1,18 +1,19 @@
-import { Outlet, useLocation } from "react-router-dom";
+"use client";
+
+import { usePathname } from "next/navigation";
+
 import Navbar from "@/components/site/Navbar";
 import Footer from "@/components/site/Footer";
 
-const PublicLayout = () => {
-  const location = useLocation();
-  const isAuthPage = location.pathname === '/login' || location.pathname === '/register';
+export default function PublicLayout({ children }: { children: React.ReactNode }) {
+  const pathname = usePathname();
+  const isAuthPage = pathname === "/login" || pathname === "/register";
 
   return (
     <>
       <Navbar showFullNav={!isAuthPage} />
-      <Outlet />
+      {children}
       <Footer />
     </>
   );
-};
-
-export default PublicLayout;
+}

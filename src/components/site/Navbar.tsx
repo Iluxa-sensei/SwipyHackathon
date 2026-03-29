@@ -1,4 +1,7 @@
-import { Link, NavLink, useLocation } from "react-router-dom";
+"use client";
+
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { useEffect, useMemo, useState } from "react";
 import { brand } from "@config/brand";
@@ -11,7 +14,7 @@ const navItems = [
 ];
 
 const Navbar = ({ showFullNav = true }: { showFullNav?: boolean }) => {
-  const { pathname } = useLocation();
+  const pathname = usePathname();
   const [mobileOpen, setMobileOpen] = useState(false);
   const sectionIds = useMemo(() => navItems.map(n => n.href.replace('#', '')).filter(Boolean), []);
   const [activeId, setActiveId] = useState<string | null>(null);
@@ -60,7 +63,7 @@ const Navbar = ({ showFullNav = true }: { showFullNav?: boolean }) => {
     <header className="sticky top-0 z-50 bg-white/80 backdrop-blur supports-[backdrop-filter]:bg-white/70 border-b border-purple-100">
       <div className="container flex h-16 items-center justify-between">
         <Link
-          to="/"
+          href="/"
           onClick={(e) => {
             if (pathname === '/') {
               e.preventDefault();
@@ -91,12 +94,12 @@ const Navbar = ({ showFullNav = true }: { showFullNav?: boolean }) => {
               ))}
             </nav>
             <div className="hidden md:flex items-center gap-2">
-              <NavLink to="/login">
+              <Link href="/login">
                 <Button variant="outline" className="text-gray-800 hover:text-gray-900">Войти</Button>
-              </NavLink>
-              <NavLink to="/register">
+              </Link>
+              <Link href="/register">
                 <Button variant="hero">Зарегистрироваться</Button>
-              </NavLink>
+              </Link>
             </div>
             {/* Mobile burger */}
             <button
@@ -123,12 +126,12 @@ const Navbar = ({ showFullNav = true }: { showFullNav?: boolean }) => {
                     ))}
                   </nav>
                   <div className="mt-2 flex gap-2">
-                    <NavLink to="/login" onClick={() => setMobileOpen(false)} className="flex-1">
+                    <Link href="/login" onClick={() => setMobileOpen(false)} className="flex-1">
                       <Button variant="outline" className="w-full text-gray-800 hover:text-gray-900">Войти</Button>
-                    </NavLink>
-                    <NavLink to="/register" onClick={() => setMobileOpen(false)} className="flex-1">
+                    </Link>
+                    <Link href="/register" onClick={() => setMobileOpen(false)} className="flex-1">
                       <Button variant="hero" className="w-full">Зарегистрироваться</Button>
-                    </NavLink>
+                    </Link>
                   </div>
                 </div>
               </div>

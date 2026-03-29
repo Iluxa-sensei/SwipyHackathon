@@ -1,4 +1,7 @@
-import { NavLink, useLocation } from "react-router-dom";
+"use client";
+
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import {
   Sidebar,
   SidebarContent,
@@ -8,7 +11,6 @@ import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
-  SidebarFooter,
   useSidebar,
 } from "@/components/ui/sidebar";
 import {
@@ -23,9 +25,11 @@ import {
   ClipboardList,
   Sparkles,
   User,
+  Shield,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { brand } from "@config/brand";
+import type { UserRole } from "@/types/profile";
 
 const studentItems = [
   { title: "Расписание", url: "/dashboard/student/schedule", icon: Calendar },
@@ -50,22 +54,38 @@ const teacherItems = [
   { title: "Профиль", url: "/dashboard/teacher/profile", icon: User },
 ];
 
+const adminItems = [{ title: "Панель", url: "/dashboard/admin", icon: Shield }];
 
 export function AppSidebar() {
   const { state } = useSidebar();
   const collapsed = state === "collapsed";
-  const location = useLocation();
-  const currentPath = location.pathname;
-  const role = currentPath.split("/")[2] as "student" | "parent" | "teacher";
+  const pathname = usePathname();
+  const role = pathname.split("/")[2] as UserRole | undefined;
 
-  const items = role === "student" ? studentItems : role === "parent" ? parentItems : teacherItems;
-  const groupLabel = role === "student" ? "Ученик" : role === "parent" ? "Родитель" : "Учитель";
+  const items =
+    role === "student"
+      ? studentItems
+      : role === "parent"
+        ? parentItems
+        : role === "admin"
+          ? adminItems
+          : teacherItems;
 
+  const groupLabel =
+    role === "student"
+      ? "Ученик"
+      : role === "parent"
+        ? "Родитель"
+        : role === "admin"
+          ? "Администратор"
+          : "Учитель";
 
-  const getNavCls = ({ isActive }: { isActive: boolean }) =>
+  const getNavCls = (href: string) =>
     cn(
       "relative flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium text-white/90 transition-all duration-200 hover:bg-white/10",
-      isActive && "bg-[#7C3AED] font-semibold text-white shadow-sm"
+      pathname === href || pathname.startsWith(`${href}/`)
+        ? "bg-[#7C3AED] font-semibold text-white shadow-sm"
+        : undefined
     );
 
   return (
@@ -87,14 +107,12 @@ export function AppSidebar() {
               {items.map((item) => (
                 <SidebarMenuItem key={item.url}>
                   <SidebarMenuButton asChild tooltip={collapsed ? item.title : undefined}>
-                    <NavLink to={item.url} end className={getNavCls}>
+                    <Link href={item.url} className={getNavCls(item.url)}>
                       <div className="relative">
                         <item.icon className="h-4 w-4 transition-transform duration-200 group-hover:scale-110" />
                       </div>
-                      <span className="transition-all duration-200 group-hover:translate-x-1">
-                        {item.title}
-                      </span>
-                    </NavLink>
+                      <span className="transition-all duration-200 group-hover:translate-x-1">{item.title}</span>
+                    </Link>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
               ))}
@@ -102,7 +120,6 @@ export function AppSidebar() {
           </SidebarGroupContent>
         </SidebarGroup>
       </SidebarContent>
-
-    </Sidebar >
+    </Sidebar>
   );
 }

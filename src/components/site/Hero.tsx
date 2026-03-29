@@ -1,5 +1,7 @@
+"use client";
+
 import { Button } from "@/components/ui/button";
-import { Link } from "react-router-dom";
+import Link from "next/link";
 import { motion } from "framer-motion";
 import { Sparkles, Bot, GraduationCap, MessageSquare } from "lucide-react";
 import { brand } from "@config/brand";
@@ -39,8 +41,8 @@ const Hero = () => {
               </p>
 
               <div className="mt-7 flex flex-col sm:flex-row gap-3 justify-center">
-                <Link to="/register"><Button variant="hero" size="lg" className="px-8 rounded-xl">Зарегистрироваться</Button></Link>
-                <Link to="/login"><Button variant="outline" size="lg" className="px-8 rounded-xl bg-white hover:bg-white border-gray-200 hover:border-gray-300 text-gray-800 hover:text-gray-900">Войти</Button></Link>
+                <Link href="/register"><Button variant="hero" size="lg" className="px-8 rounded-xl">Зарегистрироваться</Button></Link>
+                <Link href="/login"><Button variant="outline" size="lg" className="px-8 rounded-xl bg-white hover:bg-white border-gray-200 hover:border-gray-300 text-gray-800 hover:text-gray-900">Войти</Button></Link>
               </div>
 
               <div className="mt-7 grid grid-cols-2 sm:grid-cols-4 gap-3 text-sm">
