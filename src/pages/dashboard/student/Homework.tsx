@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { pageTitle } from "@/lib/page-title";
 import { BookOpen, Calendar, Clock, CheckCircle, AlertCircle, FileText, Send, Plus } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -6,7 +7,7 @@ import { Progress } from "@/components/ui/progress";
 
 const StudentHomework = () => {
   useEffect(() => {
-    document.title = "Домашние задания — Ученик | Ability School";
+    document.title = pageTitle("Домашние задания — Ученик");
   }, []);
 
   const homeworkData = [
@@ -64,15 +65,15 @@ const StudentHomework = () => {
     switch (priority) {
       case "high": return "bg-red-100 text-red-800 border-red-200";
       case "medium": return "bg-yellow-100 text-yellow-800 border-yellow-200";
-      case "low": return "bg-green-100 text-green-800 border-green-200";
+      case "low": return "bg-emerald-50 text-emerald-800 border-emerald-200";
       default: return "bg-gray-100 text-gray-800 border-gray-200";
     }
   };
 
   const getStatusIcon = (status: string) => {
     switch (status) {
-      case "completed": return <CheckCircle className="w-4 h-4 text-green-600" />;
-      case "pending": return <Clock className="w-4 h-4 text-blue-600" />;
+      case "completed": return <CheckCircle className="w-4 h-4 text-emerald-600" />;
+      case "pending": return <Clock className="w-4 h-4 text-brand" />;
       default: return <AlertCircle className="w-4 h-4 text-orange-600" />;
     }
   };
@@ -103,7 +104,7 @@ const StudentHomework = () => {
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
         <div className="p-4 rounded-xl border bg-card">
           <div className="flex items-center gap-3">
-            <div className="p-2 rounded-lg bg-blue-100 text-blue-600">
+            <div className="p-2 rounded-lg bg-purple-100 text-brand">
               <BookOpen className="w-5 h-5" />
             </div>
             <div>
@@ -114,7 +115,7 @@ const StudentHomework = () => {
         </div>
         <div className="p-4 rounded-xl border bg-card">
           <div className="flex items-center gap-3">
-            <div className="p-2 rounded-lg bg-green-100 text-green-600">
+            <div className="p-2 rounded-lg bg-emerald-50 text-emerald-600">
               <CheckCircle className="w-5 h-5" />
             </div>
             <div>
@@ -136,7 +137,7 @@ const StudentHomework = () => {
         </div>
         <div className="p-4 rounded-xl border bg-card">
           <div className="flex items-center gap-3">
-            <div className="p-2 rounded-lg bg-purple-100 text-purple-600">
+            <div className="p-2 rounded-lg bg-purple-100 text-brand">
               <Clock className="w-5 h-5" />
             </div>
             <div>
@@ -154,7 +155,7 @@ const StudentHomework = () => {
             <div className="flex items-start justify-between">
               <div className="flex items-start gap-4 flex-1">
                 <div className="flex flex-col items-center bg-white/80 rounded-lg p-3 min-w-[60px]">
-                  <BookOpen className="w-4 h-4 text-blue-600 mb-1" />
+                  <BookOpen className="w-4 h-4 text-brand mb-1" />
                   <span className="text-xs font-semibold">{homework.subject}</span>
                 </div>
 
@@ -165,7 +166,7 @@ const StudentHomework = () => {
                       {getPriorityIcon(homework.priority)} {homework.priority === "high" ? "Высокий" : homework.priority === "medium" ? "Средний" : "Низкий"}
                     </Badge>
                     {homework.status === "completed" && (
-                      <Badge className="text-xs bg-green-100 text-green-800 border-green-200">
+                      <Badge className="text-xs bg-emerald-50 text-emerald-800 border-emerald-200">
                         ✓ Завершено
                       </Badge>
                     )}
@@ -201,13 +202,13 @@ const StudentHomework = () => {
 
               <div className="flex flex-col gap-2 ml-4">
                 {homework.status === "completed" ? (
-                  <Button size="sm" variant="outline" className="text-green-600 border-green-200">
+                  <Button size="sm" variant="outline" className="text-emerald-600 border-emerald-200">
                     <CheckCircle className="w-4 h-4 mr-1" />
                     Просмотр
                   </Button>
                 ) : (
                   <>
-                    <Button size="sm" className="bg-blue-600 hover:bg-blue-700 text-white">
+                    <Button size="sm" className="bg-brand hover:bg-brand text-white">
                       <Send className="w-4 h-4 mr-1" />
                       Сдать
                     </Button>
@@ -224,9 +225,9 @@ const StudentHomework = () => {
 
       {/* Quick Actions */}
       <div className="grid md:grid-cols-2 gap-4">
-        <div className="p-6 rounded-xl border bg-gradient-to-br from-blue-50 to-blue-100">
+        <div className="p-6 rounded-xl border bg-purple-50 border border-purple-100">
           <h3 className="font-semibold mb-4 flex items-center gap-2">
-            <Calendar className="w-4 h-4 text-blue-600" />
+            <Calendar className="w-4 h-4 text-brand" />
             Ближайшие сроки
           </h3>
           <div className="space-y-2 text-sm">
@@ -241,9 +242,9 @@ const StudentHomework = () => {
           </div>
         </div>
 
-        <div className="p-6 rounded-xl border bg-gradient-to-br from-green-50 to-green-100">
+        <div className="p-6 rounded-xl border bg-purple-50/90 border border-purple-100">
           <h3 className="font-semibold mb-4 flex items-center gap-2">
-            <CheckCircle className="w-4 h-4 text-green-600" />
+            <CheckCircle className="w-4 h-4 text-emerald-600" />
             Прогресс недели
           </h3>
           <div className="space-y-2 text-sm">

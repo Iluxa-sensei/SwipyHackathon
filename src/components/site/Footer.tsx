@@ -1,28 +1,35 @@
 import { Link } from "react-router-dom";
 import { Instagram, Linkedin, MessageCircle } from "lucide-react";
+import { brand } from "@config/brand";
 
 const Footer = () => {
   return (
-    <footer className="border-t" id="contact">
+    <footer className="border-t border-purple-100 bg-[#FAFAFA]" id="contact">
       <div className="container py-10 grid gap-6 md:grid-cols-3">
         <div>
-          <div className="font-display text-lg font-bold text-gradient">Ability School</div>
+          <div className="flex items-center gap-2">
+            <img
+              src={brand.logoLightPath}
+              alt=""
+              className="h-10 w-auto max-w-[200px] object-contain object-left"
+            />
+          </div>
           <p className="text-sm text-muted-foreground mt-2">
-            Виртуальная школа с ИИ для учеников, родителей и учителей.
+            {brand.siteName} — портал для учеников, родителей и педагогов (Актобе, Казахстан).
           </p>
         </div>
         <div>
-          <h3 className="text-sm font-semibold mb-3">Контакты</h3>
+          <h3 className="text-sm font-semibold mb-3 text-brand tracking-tight">Контакты</h3>
           <ul className="space-y-2 text-sm text-muted-foreground">
             <li>Email: iluxaser07@gmail.com</li>
-            <li>Город: Уральск</li>
+            <li>Город: Актобе</li>
           </ul>
         </div>
         <div>
-          <h3 className="text-sm font-semibold mb-3">Правовая информация</h3>
+          <h3 className="text-sm font-semibold mb-3 text-brand tracking-tight">Правовая информация</h3>
           <ul className="space-y-2 text-sm text-muted-foreground">
             <li>
-              <Link to="/privacy" className="hover:text-foreground transition-colors">
+              <Link to="/privacy" className="hover:text-brand transition-colors">
                 Политика конфиденциальности
               </Link>
             </li>
@@ -33,7 +40,7 @@ const Footer = () => {
               href="https://wa.me/77000000000"
               target="_blank"
               rel="noopener noreferrer"
-              className="transition-colors hover:text-[#25D366]"
+              className="transition-colors hover:text-emerald-600"
             >
               <MessageCircle className="size-5" />
             </a>
@@ -42,12 +49,7 @@ const Footer = () => {
               href="#"
               target="_blank"
               rel="noopener noreferrer"
-              className="transition-colors hover:text-pink-500"
-              style={{
-                background: "linear-gradient(45deg,#fd5,#ff543e,#c837ab,#285AEB)",
-                WebkitBackgroundClip: "text",
-                WebkitTextFillColor: "transparent"
-              }}
+              className="transition-colors hover:text-brand"
             >
               <Instagram className="size-5" />
             </a>
@@ -56,15 +58,15 @@ const Footer = () => {
               href="#"
               target="_blank"
               rel="noopener noreferrer"
-              className="transition-colors hover:text-[#0077B5]"
+              className="transition-colors hover:text-brand"
             >
               <Linkedin className="size-5" />
             </a>
           </div>
         </div>
       </div>
-      <div className="border-t py-4 text-center text-xs text-muted-foreground">
-        © {new Date().getFullYear()} Ability School. Все права защищены.
+      <div className="border-t border-purple-100 py-4 text-center text-xs text-muted-foreground uppercase tracking-widest">
+        © {new Date().getFullYear()} {brand.siteName}. Все права защищены.
       </div>
     </footer>
   );

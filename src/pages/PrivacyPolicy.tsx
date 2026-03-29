@@ -1,8 +1,9 @@
 import { useEffect } from "react";
+import { pageTitle } from "@/lib/page-title";
 
 const PrivacyPolicy = () => {
   useEffect(() => {
-    document.title = "Политика конфиденциальности — Ability School";
+    document.title = pageTitle("Политика конфиденциальности");
   }, []);
 
   return (

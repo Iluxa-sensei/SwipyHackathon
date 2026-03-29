@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { pageTitle } from "@/lib/page-title";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
@@ -39,7 +40,7 @@ const TeacherClasses = () => {
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
 
   useEffect(() => {
-    document.title = "Классы — Учитель | Ability School";
+    document.title = pageTitle("Классы — Учитель");
   }, []);
 
   const classesData: ClassData[] = [
@@ -99,8 +100,8 @@ const TeacherClasses = () => {
 
   const getStatusColor = (status: string) => {
     switch (status) {
-      case 'active': return 'bg-green-100 text-green-800 border-green-200';
-      case 'completed': return 'bg-blue-100 text-blue-800 border-blue-200';
+      case 'active': return 'bg-emerald-50 text-emerald-800 border-emerald-200';
+      case 'completed': return 'bg-purple-100 text-brand-dark border-purple-200';
       case 'upcoming': return 'bg-yellow-100 text-yellow-800 border-yellow-200';
       default: return 'bg-gray-100 text-gray-800 border-gray-200';
     }
@@ -139,34 +140,34 @@ const TeacherClasses = () => {
 
       {/* Stats Overview */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-        <div className="p-4 rounded-xl bg-gradient-to-br from-blue-50 to-blue-100 border border-blue-200">
+        <div className="p-4 rounded-xl bg-purple-50 border border-purple-100 border border-purple-200">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm font-medium text-blue-700">Всего классов</p>
-              <p className="text-2xl font-bold text-blue-900">{classesData.length}</p>
+              <p className="text-sm font-medium text-brand-dark">Всего классов</p>
+              <p className="text-2xl font-bold text-brand-dark">{classesData.length}</p>
             </div>
-            <Users className="w-8 h-8 text-blue-600" />
+            <Users className="w-8 h-8 text-brand" />
           </div>
         </div>
-        <div className="p-4 rounded-xl bg-gradient-to-br from-green-50 to-green-100 border border-green-200">
+        <div className="p-4 rounded-xl bg-purple-50/90 border border-purple-100 border border-emerald-200">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm font-medium text-green-700">Всего учеников</p>
-              <p className="text-2xl font-bold text-green-900">{totalStudents}</p>
+              <p className="text-sm font-medium text-emerald-700">Всего учеников</p>
+              <p className="text-2xl font-bold text-emerald-900">{totalStudents}</p>
             </div>
-            <BookOpen className="w-8 h-8 text-green-600" />
+            <BookOpen className="w-8 h-8 text-emerald-600" />
           </div>
         </div>
-        <div className="p-4 rounded-xl bg-gradient-to-br from-purple-50 to-purple-100 border border-purple-200">
+        <div className="p-4 rounded-xl bg-purple-50 border border-purple-100 shadow-brand-shadow">
           <div className="flex items-center justify-between">
             <div>
               <p className="text-sm font-medium text-purple-700">Средний прогресс</p>
               <p className="text-2xl font-bold text-purple-900">{avgProgress.toFixed(0)}%</p>
             </div>
-            <TrendingUp className="w-8 h-8 text-purple-600" />
+            <TrendingUp className="w-8 h-8 text-brand" />
           </div>
         </div>
-        <div className="p-4 rounded-xl bg-gradient-to-br from-orange-50 to-orange-100 border border-orange-200">
+        <div className="p-4 rounded-xl bg-amber-50 border border-amber-100 shadow-brand-shadow">
           <div className="flex items-center justify-between">
             <div>
               <p className="text-sm font-medium text-orange-700">Посещаемость</p>

@@ -216,12 +216,12 @@ export default function StudentClassroom() {
   };
 
   const tools = [
-    { name: "Калькулятор", icon: Calculator, color: "bg-blue-500" },
-    { name: "Ручка", icon: PenTool, color: "bg-green-500" },
+    { name: "Калькулятор", icon: Calculator, color: "bg-brand" },
+    { name: "Ручка", icon: PenTool, color: "bg-emerald-500" },
     { name: "Ластик", icon: Eraser, color: "bg-red-500" },
     { name: "Текст", icon: Type, color: "bg-purple-500" },
     { name: "Изображение", icon: Image, color: "bg-yellow-500" },
-    { name: "Файл", icon: FileText, color: "bg-indigo-500" },
+    { name: "Файл", icon: FileText, color: "bg-brand" },
     { name: "Ссылка", icon: Link, color: "bg-pink-500" },
     { name: "Эмодзи", icon: Smile, color: "bg-orange-500" }
   ];
@@ -233,10 +233,10 @@ export default function StudentClassroom() {
         {notifications.map((notification) => (
           <div
             key={notification.id}
-            className={`p-3 rounded-lg shadow-lg flex items-center gap-2 text-white animate-in slide-in-from-right ${notification.type === 'success' ? 'bg-green-500' :
+            className={`p-3 rounded-lg shadow-lg flex items-center gap-2 text-white animate-in slide-in-from-right ${notification.type === 'success' ? 'bg-emerald-500' :
                 notification.type === 'warning' ? 'bg-yellow-500' :
                   notification.type === 'error' ? 'bg-red-500' :
-                    'bg-blue-500'
+                    'bg-brand'
               }`}
           >
             {notification.type === 'success' && <CheckCircle className="w-4 h-4" />}
@@ -256,7 +256,7 @@ export default function StudentClassroom() {
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-4">
                 <div className="flex items-center gap-2">
-                  <div className={`w-3 h-3 rounded-full ${connectionQuality === 'excellent' ? 'bg-green-500' :
+                  <div className={`w-3 h-3 rounded-full ${connectionQuality === 'excellent' ? 'bg-emerald-500' :
                       connectionQuality === 'good' ? 'bg-yellow-500' :
                         'bg-red-500'
                     }`}></div>
@@ -266,7 +266,7 @@ export default function StudentClassroom() {
                         'Плохое соединение'}
                   </span>
                 </div>
-                <Badge variant="outline" className="bg-green-100 text-green-800">
+                <Badge variant="outline" className="bg-emerald-50 text-emerald-800">
                   Онлайн
                 </Badge>
               </div>
@@ -314,7 +314,7 @@ export default function StudentClassroom() {
 
             {/* Connection Status */}
             <div className="absolute top-4 left-4 flex items-center gap-2">
-              <div className={`w-3 h-3 rounded-full ${connectionQuality === 'excellent' ? 'bg-green-500' :
+              <div className={`w-3 h-3 rounded-full ${connectionQuality === 'excellent' ? 'bg-emerald-500' :
                   connectionQuality === 'good' ? 'bg-yellow-500' : 'bg-red-500'
                 }`} />
               <span className="text-white text-sm bg-black bg-opacity-50 px-2 py-1 rounded">
@@ -435,7 +435,7 @@ export default function StudentClassroom() {
                           {participant.role === "Учитель" && <Badge variant="outline" className="text-xs">Учитель</Badge>}
                         </div>
                         <div className="flex items-center gap-1">
-                          <div className={`w-2 h-2 rounded-full ${participant.isOnline ? 'bg-green-500' : 'bg-gray-400'}`}></div>
+                          <div className={`w-2 h-2 rounded-full ${participant.isOnline ? 'bg-emerald-500' : 'bg-gray-400'}`}></div>
                           <span className="text-xs text-gray-500">{participant.isOnline ? 'Онлайн' : 'Офлайн'}</span>
                         </div>
                       </div>
@@ -454,7 +454,7 @@ export default function StudentClassroom() {
                   {chatMessages.map((message) => (
                     <div key={message.id} className={`flex ${message.isTeacher ? 'justify-end' : 'justify-start'}`}>
                       <div className={`max-w-[80%] p-3 rounded-lg ${message.isTeacher
-                          ? 'bg-blue-500 text-white'
+                          ? 'bg-brand text-white'
                           : 'bg-gray-100 text-gray-900'
                         }`}>
                         <div className="text-xs font-medium mb-1">{message.user}</div>

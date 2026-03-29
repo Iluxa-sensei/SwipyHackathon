@@ -96,13 +96,13 @@ const ParentProfile = () => {
         <div className="space-y-6">
             <div className="flex items-center justify-between">
                 <div>
-                    <h1 className="text-3xl font-bold text-gradient">Мой профиль</h1>
+                    <h1 className="text-3xl font-bold text-brand tracking-tight">Мой профиль</h1>
                     <p className="text-muted-foreground">Управление личной информацией и данными детей</p>
                 </div>
                 <div className="flex gap-2">
                     {isEditing ? (
                         <>
-                            <Button onClick={handleSave} className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700">
+                            <Button onClick={handleSave} className="bg-brand hover:bg-brand-dark rounded-xl">
                                 <Save className="h-4 w-4 mr-2" />
                                 Сохранить
                             </Button>
@@ -144,7 +144,7 @@ const ParentProfile = () => {
                                 <div className="relative">
                                     <Avatar className="h-24 w-24">
                                         <AvatarImage src="/placeholder.svg" alt="Аватар" />
-                                        <AvatarFallback className="text-lg avatar-gradient text-white">
+                                        <AvatarFallback className="text-lg bg-brand text-white">
                                             МП
                                         </AvatarFallback>
                                     </Avatar>
@@ -161,7 +161,7 @@ const ParentProfile = () => {
                                 <div className="space-y-2">
                                     <h3 className="text-xl font-semibold">{formData.firstName} {formData.lastName}</h3>
                                     <p className="text-muted-foreground">Родитель</p>
-                                    <Badge variant="secondary" className="bg-green-100 text-green-800">
+                                    <Badge variant="secondary" className="bg-emerald-50 text-emerald-800">
                                         Активный родитель
                                     </Badge>
                                 </div>
@@ -304,7 +304,7 @@ const ParentProfile = () => {
                                         <div className="flex items-center gap-4">
                                             <Avatar className="h-12 w-12">
                                                 <AvatarImage src="/placeholder.svg" alt={child.name} />
-                                                <AvatarFallback className="bg-gradient-to-br from-blue-500 to-purple-600 text-white">
+                                                <AvatarFallback className="bg-brand text-white">
                                                     {child.name.split(' ').map(n => n[0]).join('')}
                                                 </AvatarFallback>
                                             </Avatar>
@@ -348,7 +348,7 @@ const ParentProfile = () => {
                             <div className="space-y-4">
                                 {notifications.map((notification) => (
                                     <div key={notification.id} className="flex items-center gap-4 p-4 border rounded-lg">
-                                        <div className="h-10 w-10 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center">
+                                        <div className="h-10 w-10 rounded-full bg-brand flex items-center justify-center">
                                             {notification.type === 'meeting' && <Users className="h-5 w-5 text-white" />}
                                             {notification.type === 'grades' && <TrendingUp className="h-5 w-5 text-white" />}
                                             {notification.type === 'homework' && <BookOpen className="h-5 w-5 text-white" />}
@@ -386,7 +386,7 @@ const ParentProfile = () => {
                             <div className="space-y-4">
                                 {recentActivity.map((activity) => (
                                     <div key={activity.id} className="flex items-center gap-4 p-4 border rounded-lg">
-                                        <div className="h-10 w-10 rounded-full bg-gradient-to-br from-green-500 to-blue-600 flex items-center justify-center">
+                                        <div className="h-10 w-10 rounded-full bg-brand flex items-center justify-center">
                                             <TrendingUp className="h-5 w-5 text-white" />
                                         </div>
                                         <div className="flex-1">

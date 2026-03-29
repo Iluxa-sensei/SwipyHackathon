@@ -1,16 +1,17 @@
 import { useEffect } from "react";
+import { pageTitle } from "@/lib/page-title";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 
 const StudentDashboard = () => {
   useEffect(() => {
-    document.title = "Личный кабинет — Ученик | Ability School";
+    document.title = pageTitle("Личный кабинет — Ученик");
   }, []);
 
   return (
     <main className="container py-10">
       <header className="mb-6">
-        <h1 className="text-3xl font-display font-bold">Добро пожаловать, Ученик</h1>
+        <h1 className="text-3xl font-display font-bold text-brand tracking-tight">Добро пожаловать, Ученик</h1>
         <p className="text-muted-foreground">Ваше расписание, задания и виртуальный класс</p>
       </header>
       <section className="grid md:grid-cols-3 gap-6">

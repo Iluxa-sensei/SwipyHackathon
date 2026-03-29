@@ -95,8 +95,8 @@ export default function AIPlanner() {
   const getStatusColor = (status: string) => {
     switch (status) {
       case 'draft': return 'bg-gray-100 text-gray-800';
-      case 'ready': return 'bg-green-100 text-green-800';
-      case 'in-progress': return 'bg-blue-100 text-blue-800';
+      case 'ready': return 'bg-emerald-50 text-emerald-800';
+      case 'in-progress': return 'bg-purple-100 text-brand-dark';
       case 'completed': return 'bg-purple-100 text-purple-800';
       default: return 'bg-gray-100 text-gray-800';
     }
@@ -104,7 +104,7 @@ export default function AIPlanner() {
 
   const getDifficultyColor = (difficulty: string) => {
     switch (difficulty) {
-      case 'easy': return 'bg-green-100 text-green-800';
+      case 'easy': return 'bg-emerald-50 text-emerald-800';
       case 'medium': return 'bg-yellow-100 text-yellow-800';
       case 'hard': return 'bg-red-100 text-red-800';
       default: return 'bg-gray-100 text-gray-800';
@@ -143,7 +143,7 @@ export default function AIPlanner() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-50 via-blue-50 to-indigo-100">
+    <div className="min-h-screen bg-[#FAFAFA]">
       <div className="container mx-auto px-4 py-8">
         <div className="mb-8">
           <h1 className="text-3xl md:text-4xl font-display font-bold">ИИ‑планировщик уроков</h1>
@@ -166,7 +166,7 @@ export default function AIPlanner() {
             <Card>
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
-                  <Sparkles className="h-5 w-5 text-purple-600" />
+                  <Sparkles className="h-5 w-5 text-brand" />
                   Генератор планов уроков
                 </CardTitle>
                 <CardDescription>
@@ -267,7 +267,7 @@ export default function AIPlanner() {
                 <Button 
                   onClick={generateLessonPlan} 
                   disabled={isGenerating}
-                  className="w-full bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700"
+                  className="w-full bg-brand hover:bg-brand-dark"
                 >
                   {isGenerating ? (
                     <>
@@ -338,13 +338,13 @@ export default function AIPlanner() {
 
                     <div className="space-y-2">
                       <div className="flex items-center gap-2 text-sm">
-                        <Target className="h-4 w-4 text-blue-600" />
+                        <Target className="h-4 w-4 text-brand" />
                         <span className="font-medium">Цели:</span>
                       </div>
                       <ul className="text-sm text-muted-foreground ml-6 space-y-1">
                         {plan.objectives.slice(0, 2).map((objective, index) => (
                           <li key={index} className="flex items-start gap-2">
-                            <span className="text-blue-600 mt-1">•</span>
+                            <span className="text-brand mt-1">•</span>
                             {objective}
                           </li>
                         ))}

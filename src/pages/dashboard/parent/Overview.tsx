@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { pageTitle } from "@/lib/page-title";
 import {
   Card,
   CardContent,
@@ -203,7 +204,7 @@ interface Notification {
 
 const ParentOverview = () => {
   useEffect(() => {
-    document.title = "Обзор — Родитель | Ability School";
+    document.title = pageTitle("Обзор — Родитель");
   }, []);
 
   const [selectedChild, setSelectedChild] = useState<string>("1");
@@ -262,8 +263,8 @@ const ParentOverview = () => {
 
   const getEventTypeColor = (type: string) => {
     switch (type) {
-      case 'parent_meeting': return 'bg-blue-100 text-blue-800 border-blue-200';
-      case 'school_event': return 'bg-green-100 text-green-800 border-green-200';
+      case 'parent_meeting': return 'bg-purple-100 text-brand-dark border-purple-200';
+      case 'school_event': return 'bg-emerald-50 text-emerald-800 border-emerald-200';
       case 'exam': return 'bg-red-100 text-red-800 border-red-200';
       case 'holiday': return 'bg-yellow-100 text-yellow-800 border-yellow-200';
       default: return 'bg-gray-100 text-gray-800 border-gray-200';
@@ -282,10 +283,10 @@ const ParentOverview = () => {
 
   const getNotificationTypeColor = (type: string) => {
     switch (type) {
-      case 'success': return 'bg-green-100 text-green-800 border-green-200';
+      case 'success': return 'bg-emerald-50 text-emerald-800 border-emerald-200';
       case 'warning': return 'bg-yellow-100 text-yellow-800 border-yellow-200';
       case 'error': return 'bg-red-100 text-red-800 border-red-200';
-      case 'info': return 'bg-blue-100 text-blue-800 border-blue-200';
+      case 'info': return 'bg-purple-100 text-brand-dark border-purple-200';
       default: return 'bg-gray-100 text-gray-800 border-gray-200';
     }
   };
@@ -324,8 +325,8 @@ const ParentOverview = () => {
       {/* Child Selector */}
       <div className="flex items-center gap-4 p-4 rounded-xl border bg-card">
         <div className="flex items-center gap-3">
-          <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
-            <span className="text-lg font-semibold text-blue-600">{selectedChildData?.avatar}</span>
+          <div className="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center">
+            <span className="text-lg font-semibold text-brand">{selectedChildData?.avatar}</span>
           </div>
           <div>
             <h3 className="font-semibold">{selectedChildData?.name}</h3>
@@ -346,36 +347,36 @@ const ParentOverview = () => {
 
       {/* Stats Overview */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-        <div className="p-4 rounded-xl bg-gradient-to-br from-blue-50 to-blue-100 border border-blue-200">
+        <div className="p-4 rounded-xl bg-purple-50 border border-purple-100 border border-purple-200">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm font-medium text-blue-700">Общий прогресс</p>
-              <p className="text-2xl font-bold text-blue-900">{selectedChildData?.overallProgress}%</p>
+              <p className="text-sm font-medium text-brand-dark">Общий прогресс</p>
+              <p className="text-2xl font-bold text-brand-dark">{selectedChildData?.overallProgress}%</p>
             </div>
-            <TrendingUp className="w-8 h-8 text-blue-600" />
+            <TrendingUp className="w-8 h-8 text-brand" />
           </div>
           <Progress value={selectedChildData?.overallProgress || 0} className="h-2 mt-2" />
         </div>
-        <div className="p-4 rounded-xl bg-gradient-to-br from-green-50 to-green-100 border border-green-200">
+        <div className="p-4 rounded-xl bg-purple-50/90 border border-purple-100 border border-emerald-200">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm font-medium text-green-700">Посещаемость</p>
-              <p className="text-2xl font-bold text-green-900">{selectedChildData?.attendance}%</p>
+              <p className="text-sm font-medium text-emerald-700">Посещаемость</p>
+              <p className="text-2xl font-bold text-emerald-900">{selectedChildData?.attendance}%</p>
             </div>
-            <CheckCircle className="w-8 h-8 text-green-600" />
+            <CheckCircle className="w-8 h-8 text-emerald-600" />
           </div>
           <Progress value={selectedChildData?.attendance || 0} className="h-2 mt-2" />
         </div>
-        <div className="p-4 rounded-xl bg-gradient-to-br from-purple-50 to-purple-100 border border-purple-200">
+        <div className="p-4 rounded-xl bg-purple-50 border border-purple-100 shadow-brand-shadow">
           <div className="flex items-center justify-between">
             <div>
               <p className="text-sm font-medium text-purple-700">Средняя оценка</p>
               <p className="text-2xl font-bold text-purple-900">{selectedChildData?.averageGrade}</p>
             </div>
-            <Star className="w-8 h-8 text-purple-600" />
+            <Star className="w-8 h-8 text-brand" />
           </div>
         </div>
-        <div className="p-4 rounded-xl bg-gradient-to-br from-orange-50 to-orange-100 border border-orange-200">
+        <div className="p-4 rounded-xl bg-amber-50 border border-amber-100 shadow-brand-shadow">
           <div className="flex items-center justify-between">
             <div>
               <p className="text-sm font-medium text-orange-700">Достижения</p>
@@ -509,8 +510,8 @@ const ParentOverview = () => {
             <div className="space-y-3">
               {selectedChildData?.teachers.map((teacher) => (
                 <div key={teacher.id} className="flex items-center gap-3 p-3 rounded-lg border hover:bg-gray-50">
-                  <div className="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center">
-                    <span className="text-sm font-semibold text-blue-600">{teacher.avatar}</span>
+                  <div className="w-10 h-10 bg-purple-100 rounded-full flex items-center justify-center">
+                    <span className="text-sm font-semibold text-brand">{teacher.avatar}</span>
                   </div>
                   <div className="flex-1 min-w-0">
                     <h4 className="font-medium">{teacher.name}</h4>
@@ -553,12 +554,12 @@ const ParentOverview = () => {
           <CardContent>
             <div className="space-y-3">
               {selectedChildData?.notifications.map((notification) => (
-                <div key={notification.id} className={`flex items-start gap-3 p-3 rounded-lg border ${!notification.read ? 'bg-blue-50 border-blue-200' : 'hover:bg-gray-50'
+                <div key={notification.id} className={`flex items-start gap-3 p-3 rounded-lg border ${!notification.read ? 'bg-purple-50 border-purple-200' : 'hover:bg-gray-50'
                   }`}>
                   <div className="flex-shrink-0 mt-1">
-                    <div className={`w-3 h-3 rounded-full ${notification.type === 'success' ? 'bg-green-500' :
+                    <div className={`w-3 h-3 rounded-full ${notification.type === 'success' ? 'bg-emerald-500' :
                       notification.type === 'warning' ? 'bg-yellow-500' :
-                        notification.type === 'error' ? 'bg-red-500' : 'bg-blue-500'
+                        notification.type === 'error' ? 'bg-red-500' : 'bg-brand'
                       }`}></div>
                   </div>
                   <div className="flex-1 min-w-0">
@@ -567,7 +568,7 @@ const ParentOverview = () => {
                     <span className="text-xs text-muted-foreground">{notification.timestamp}</span>
                   </div>
                   {!notification.read && (
-                    <Badge className="bg-blue-600 text-white">Новое</Badge>
+                    <Badge className="bg-brand text-white">Новое</Badge>
                   )}
                 </div>
               ))}

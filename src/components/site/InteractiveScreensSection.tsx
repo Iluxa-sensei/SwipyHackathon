@@ -5,6 +5,7 @@ import screenVirtualClass from "@/assets/screenshot-virtual-class.jpg";
 import screenAIChat from "@/assets/screenshot-ai-chat.jpg";
 import screenParentDashboard from "@/assets/screenshot-parent-dashboard.jpg";
 import heroAbility from "@/assets/hero-ability.jpg";
+import { brand } from "@config/brand";
 
 const cards = [
     {
@@ -70,14 +71,14 @@ const cardVariants = {
 
 export default function InteractiveScreensSection() {
     return (
-        <section id="screens" className="py-20 bg-gradient-to-br from-blue-50 to-indigo-100">
+        <section id="screens" className="py-20 bg-purple-50 border border-purple-100">
             <div className="container">
                 <header className="text-center max-w-2xl mx-auto mb-12">
-                    <h2 className="text-4xl md:text-5xl font-display font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-3">
+                    <h2 className="text-4xl md:text-5xl font-display font-bold text-brand tracking-tight mb-3">
                         Ключевые возможности платформы
                     </h2>
                     <p className="text-lg text-muted-foreground">
-                        Оцените интерактивность и инновации Ability School — наведите на карточку!
+                        Оцените интерактивность и инновации {brand.siteName} — наведите на карточку!
                     </p>
                 </header>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
@@ -101,7 +102,7 @@ export default function InteractiveScreensSection() {
                                 />
                             </div>
                             <CardContent className="p-8 pt-6 flex flex-col items-center">
-                                <h3 className="text-2xl font-bold mb-2 text-center bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+                                <h3 className="text-2xl font-bold mb-2 text-center text-brand tracking-tight">
                                     {card.title}
                                 </h3>
                                 <p className="text-base text-muted-foreground text-center mb-4 min-h-[56px]">
@@ -109,7 +110,7 @@ export default function InteractiveScreensSection() {
                                 </p>
                                 <div className="flex flex-wrap justify-center gap-3 mb-2">
                                     {card.features.map((f, idx) => (
-                                        <span key={f.label} className="flex items-center gap-1 px-3 py-1 rounded-full bg-gradient-to-r from-blue-100 to-purple-100 text-blue-700 shadow-sm text-sm font-medium group-hover:scale-110 transition-transform">
+                                        <span key={f.label} className="flex items-center gap-1 px-3 py-1 rounded-full bg-purple-100 text-brand-dark shadow-sm text-sm font-medium group-hover:scale-110 transition-transform">
                                             <f.icon className="w-4 h-4 mr-1" />
                                             {f.label}
                                         </span>

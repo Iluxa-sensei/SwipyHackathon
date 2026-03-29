@@ -1,6 +1,7 @@
 import { Link, NavLink, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { useEffect, useMemo, useState } from "react";
+import { brand } from "@config/brand";
 
 const navItems = [
   { href: "#about", label: "О проекте" },
@@ -56,7 +57,7 @@ const Navbar = ({ showFullNav = true }: { showFullNav?: boolean }) => {
   }, [sectionIds]);
 
   return (
-    <header className="sticky top-0 z-50 bg-white/70 backdrop-blur supports-[backdrop-filter]:bg-white/60 border-b">
+    <header className="sticky top-0 z-50 bg-white/80 backdrop-blur supports-[backdrop-filter]:bg-white/70 border-b border-purple-100">
       <div className="container flex h-16 items-center justify-between">
         <Link
           to="/"
@@ -67,9 +68,14 @@ const Navbar = ({ showFullNav = true }: { showFullNav?: boolean }) => {
               setMobileOpen(false);
             }
           }}
-          className="font-display text-xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent hover:opacity-90 transition-opacity"
+          className="flex items-center gap-2 font-display text-xl font-bold text-brand tracking-tight hover:opacity-90 transition-opacity"
         >
-          Ability School
+          <img
+            src={brand.logoLightPath}
+            alt=""
+            className="h-9 w-auto max-w-[160px] object-contain object-left"
+          />
+          <span className="hidden sm:inline">{brand.siteName}</span>
         </Link>
         {showFullNav && (
           <>

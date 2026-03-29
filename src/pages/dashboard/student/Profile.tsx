@@ -76,13 +76,13 @@ const StudentProfile = () => {
         <div className="space-y-6">
             <div className="flex items-center justify-between">
                 <div>
-                    <h1 className="text-3xl font-bold text-gradient">Мой профиль</h1>
+                    <h1 className="text-3xl font-bold text-brand tracking-tight">Мой профиль</h1>
                     <p className="text-muted-foreground">Управление личной информацией и настройками</p>
                 </div>
                 <div className="flex gap-2">
                     {isEditing ? (
                         <>
-                            <Button onClick={handleSave} className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700">
+                            <Button onClick={handleSave} className="bg-brand hover:bg-brand-dark rounded-xl">
                                 <Save className="h-4 w-4 mr-2" />
                                 Сохранить
                             </Button>
@@ -123,7 +123,7 @@ const StudentProfile = () => {
                                 <div className="relative">
                                     <Avatar className="h-24 w-24">
                                         <AvatarImage src="/placeholder.svg" alt="Аватар" />
-                                        <AvatarFallback className="text-lg avatar-gradient text-white">
+                                        <AvatarFallback className="text-lg bg-brand text-white">
                                             АП
                                         </AvatarFallback>
                                     </Avatar>
@@ -140,7 +140,7 @@ const StudentProfile = () => {
                                 <div className="space-y-2">
                                     <h3 className="text-xl font-semibold">{formData.firstName} {formData.lastName}</h3>
                                     <p className="text-muted-foreground">Ученик 10А класса</p>
-                                    <Badge variant="secondary" className="bg-blue-100 text-blue-800">
+                                    <Badge variant="secondary" className="bg-purple-100 text-brand-dark">
                                         Активный ученик
                                     </Badge>
                                 </div>
@@ -289,7 +289,7 @@ const StudentProfile = () => {
                                             </div>
                                             <Badge
                                                 variant={subject.grade === 5 ? "default" : "secondary"}
-                                                className={subject.grade === 5 ? "bg-green-100 text-green-800" : "bg-yellow-100 text-yellow-800"}
+                                                className={subject.grade === 5 ? "bg-emerald-50 text-emerald-800" : "bg-yellow-100 text-yellow-800"}
                                             >
                                                 {subject.grade}
                                             </Badge>
@@ -313,7 +313,7 @@ const StudentProfile = () => {
                             <div className="space-y-4">
                                 {achievements.map((achievement) => (
                                     <div key={achievement.id} className="flex items-center gap-4 p-4 border rounded-lg">
-                                        <div className="h-12 w-12 rounded-full bg-gradient-to-br from-yellow-400 to-orange-500 flex items-center justify-center">
+                                        <div className="h-12 w-12 rounded-full bg-brand flex items-center justify-center">
                                             <Trophy className="h-6 w-6 text-white" />
                                         </div>
                                         <div className="flex-1">

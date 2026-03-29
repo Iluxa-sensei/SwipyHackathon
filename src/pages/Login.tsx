@@ -5,6 +5,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { ArrowLeft, Eye, EyeOff, Mail, Lock, User, GraduationCap } from "lucide-react";
+import { pageTitle } from "@/lib/page-title";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -18,7 +19,7 @@ const Login = () => {
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    document.title = "Вход — Ability School";
+    document.title = pageTitle("Вход");
   }, []);
 
   const validateForm = () => {
@@ -76,7 +77,7 @@ const Login = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 py-8 px-4">
+    <div className="min-h-screen bg-[#FAFAFA] py-8 px-4">
       <div className="container max-w-md mx-auto">
         {/* Back Button */}
         <motion.button
@@ -85,7 +86,7 @@ const Login = () => {
           transition={{ duration: 0.5 }}
           type="button"
           onClick={() => navigate(-1)}
-          className="mb-8 flex items-center gap-2 text-sm text-muted-foreground hover:text-blue-600 transition-colors group"
+          className="mb-8 flex items-center gap-2 text-sm text-muted-foreground hover:text-brand transition-colors group"
         >
           <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
           Назад
@@ -103,11 +104,11 @@ const Login = () => {
                 initial={{ scale: 0.8 }}
                 animate={{ scale: 1 }}
                 transition={{ duration: 0.5, delay: 0.2 }}
-                className="w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-4"
+                className="w-16 h-16 bg-brand rounded-full flex items-center justify-center mx-auto mb-4"
               >
                 <Lock className="w-8 h-8 text-white" />
               </motion.div>
-              <CardTitle className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+              <CardTitle className="text-2xl font-bold text-brand tracking-tight">
                 Добро пожаловать
               </CardTitle>
               <p className="text-muted-foreground mt-2">
@@ -135,7 +136,7 @@ const Login = () => {
                       value={formData.email}
                       onChange={(e) => handleInputChange("email", e.target.value)}
                       required
-                      className={`w-full px-4 py-3 border rounded-lg transition-all duration-200 focus:ring-2 focus:ring-blue-500 focus:border-transparent ${errors.email ? "border-red-300 focus:ring-red-500" : "border-gray-300"
+                      className={`w-full px-4 py-3 border rounded-lg transition-all duration-200 focus:ring-2 focus:ring-purple-500 focus:border-transparent ${errors.email ? "border-red-300 focus:ring-red-500" : "border-gray-300"
                         }`}
                       placeholder="Введите ваш email"
                     />
@@ -169,7 +170,7 @@ const Login = () => {
                       value={formData.password}
                       onChange={(e) => handleInputChange("password", e.target.value)}
                       required
-                      className={`w-full px-4 py-3 border rounded-lg transition-all duration-200 focus:ring-2 focus:ring-blue-500 focus:border-transparent pr-12 ${errors.password ? "border-red-300 focus:ring-red-500" : "border-gray-300"
+                      className={`w-full px-4 py-3 border rounded-lg transition-all duration-200 focus:ring-2 focus:ring-purple-500 focus:border-transparent pr-12 ${errors.password ? "border-red-300 focus:ring-red-500" : "border-gray-300"
                         }`}
                       placeholder="Введите пароль"
                     />
@@ -204,7 +205,7 @@ const Login = () => {
                     Роль
                   </label>
                   <Select value={role} onValueChange={setRole}>
-                    <SelectTrigger className="h-12 border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                    <SelectTrigger className="h-12 border-gray-300 focus:ring-2 focus:ring-purple-500 focus:border-transparent">
                       <SelectValue />
                     </SelectTrigger>
                     <SelectContent>
@@ -229,7 +230,7 @@ const Login = () => {
                 >
                   <Button
                     type="submit"
-                    className="w-full h-12 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-medium rounded-lg transition-all duration-200 transform hover:scale-[1.02] shadow-lg"
+                    className="w-full h-12 bg-brand hover:bg-brand-dark rounded-xl text-white font-medium rounded-lg transition-all duration-200 transform hover:scale-[1.02] shadow-lg"
                     disabled={isLoading}
                   >
                     {isLoading ? (
@@ -256,7 +257,7 @@ const Login = () => {
                   Нет аккаунта?{" "}
                   <a
                     href="/register"
-                    className="text-blue-600 hover:text-blue-700 font-medium underline-offset-4 hover:underline transition-colors"
+                    className="text-brand hover:text-brand-dark font-medium underline-offset-4 hover:underline transition-colors"
                   >
                     Зарегистрируйтесь
                   </a>

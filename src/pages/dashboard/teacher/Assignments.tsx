@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { pageTitle } from "@/lib/page-title";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
@@ -60,7 +61,7 @@ const TeacherAssignments = () => {
   const [searchQuery, setSearchQuery] = useState<string>('');
 
   useEffect(() => {
-    document.title = "Задания — Учитель | Ability School";
+    document.title = pageTitle("Задания — Учитель");
   }, []);
 
   const assignments: Assignment[] = [
@@ -178,8 +179,8 @@ const TeacherAssignments = () => {
 
   const getStatusColor = (status: string) => {
     switch (status) {
-      case 'published': return 'bg-green-100 text-green-800 border-green-200';
-      case 'in-progress': return 'bg-blue-100 text-blue-800 border-blue-200';
+      case 'published': return 'bg-emerald-50 text-emerald-800 border-emerald-200';
+      case 'in-progress': return 'bg-purple-100 text-brand-dark border-purple-200';
       case 'completed': return 'bg-purple-100 text-purple-800 border-purple-200';
       case 'draft': return 'bg-yellow-100 text-yellow-800 border-yellow-200';
       default: return 'bg-gray-100 text-gray-800 border-gray-200';
@@ -200,7 +201,7 @@ const TeacherAssignments = () => {
     switch (priority) {
       case 'high': return 'bg-red-100 text-red-800';
       case 'medium': return 'bg-yellow-100 text-yellow-800';
-      case 'low': return 'bg-green-100 text-green-800';
+      case 'low': return 'bg-emerald-50 text-emerald-800';
       default: return 'bg-gray-100 text-gray-800';
     }
   };
@@ -247,34 +248,34 @@ const TeacherAssignments = () => {
 
       {/* Stats Overview */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-        <div className="p-4 rounded-xl bg-gradient-to-br from-blue-50 to-blue-100 border border-blue-200">
+        <div className="p-4 rounded-xl bg-purple-50 border border-purple-100 border border-purple-200">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm font-medium text-blue-700">Всего заданий</p>
-              <p className="text-2xl font-bold text-blue-900">{totalAssignments}</p>
+              <p className="text-sm font-medium text-brand-dark">Всего заданий</p>
+              <p className="text-2xl font-bold text-brand-dark">{totalAssignments}</p>
             </div>
-            <FileText className="w-8 h-8 text-blue-600" />
+            <FileText className="w-8 h-8 text-brand" />
           </div>
         </div>
-        <div className="p-4 rounded-xl bg-gradient-to-br from-green-50 to-green-100 border border-green-200">
+        <div className="p-4 rounded-xl bg-purple-50/90 border border-purple-100 border border-emerald-200">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm font-medium text-green-700">Опубликованные</p>
-              <p className="text-2xl font-bold text-green-900">{publishedAssignments}</p>
+              <p className="text-sm font-medium text-emerald-700">Опубликованные</p>
+              <p className="text-2xl font-bold text-emerald-900">{publishedAssignments}</p>
             </div>
-            <CheckCircle className="w-8 h-8 text-green-600" />
+            <CheckCircle className="w-8 h-8 text-emerald-600" />
           </div>
         </div>
-        <div className="p-4 rounded-xl bg-gradient-to-br from-purple-50 to-purple-100 border border-purple-200">
+        <div className="p-4 rounded-xl bg-purple-50 border border-purple-100 shadow-brand-shadow">
           <div className="flex items-center justify-between">
             <div>
               <p className="text-sm font-medium text-purple-700">Завершённые</p>
               <p className="text-2xl font-bold text-purple-900">{completedAssignments}</p>
             </div>
-            <Award className="w-8 h-8 text-purple-600" />
+            <Award className="w-8 h-8 text-brand" />
           </div>
         </div>
-        <div className="p-4 rounded-xl bg-gradient-to-br from-orange-50 to-orange-100 border border-orange-200">
+        <div className="p-4 rounded-xl bg-amber-50 border border-amber-100 shadow-brand-shadow">
           <div className="flex items-center justify-between">
             <div>
               <p className="text-sm font-medium text-orange-700">Средняя оценка</p>

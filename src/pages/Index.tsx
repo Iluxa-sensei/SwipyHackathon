@@ -35,6 +35,7 @@ import {
 import { useEffect, useRef, useState } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { Link } from "react-router-dom";
+import { brand } from "@config/brand";
 
 const revealVariants = {
   hidden: { opacity: 0, y: 60 },
@@ -79,7 +80,7 @@ const Index = () => {
   const y3 = useTransform(scrollY, [0, 300], [0, -30]);
 
   useEffect(() => {
-    document.title = "Ability School — виртуальная школа будущего";
+    document.title = brand.portalTitle;
   }, []);
 
   // Анимация чисел
@@ -92,18 +93,18 @@ const Index = () => {
       {/* Floating Background Elements */}
       <motion.div
         style={{ y: y1 }}
-        className="absolute top-20 left-10 w-20 h-20 bg-gradient-to-br from-blue-400/20 to-purple-400/20 rounded-full blur-xl pointer-events-none"
+        className="absolute top-20 left-10 w-20 h-20 bg-brand/20 rounded-full blur-xl pointer-events-none"
         animate={floatingVariants.float}
       />
       <motion.div
         style={{ y: y2 }}
-        className="absolute top-40 right-20 w-32 h-32 bg-gradient-to-br from-green-400/20 to-blue-400/20 rounded-full blur-xl pointer-events-none"
+        className="absolute top-40 right-20 w-32 h-32 bg-brand/15 rounded-full blur-xl pointer-events-none"
         animate={floatingVariants.float}
         transition={{ delay: 1 }}
       />
       <motion.div
         style={{ y: y3 }}
-        className="absolute bottom-40 left-1/4 w-16 h-16 bg-gradient-to-br from-purple-400/20 to-pink-400/20 rounded-full blur-xl pointer-events-none"
+        className="absolute bottom-40 left-1/4 w-16 h-16 bg-brand-light/20 rounded-full blur-xl pointer-events-none"
         animate={floatingVariants.float}
         transition={{ delay: 2 }}
       />
@@ -121,7 +122,7 @@ const Index = () => {
       {/* About Section */}
       <motion.section
         id="about"
-        className="py-16 md:py-24 bg-gradient-to-br from-blue-50 to-indigo-50 relative"
+        className="py-16 md:py-24 bg-[#FAFAFA] relative"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.2 }}
@@ -136,16 +137,16 @@ const Index = () => {
                 transition={{ duration: 0.5 }}
                 viewport={{ once: true }}
               >
-                <Badge variant="secondary" className="bg-blue-100 text-blue-700 border-blue-200 hover:bg-blue-200 transition-colors">
+                <Badge variant="secondary" className="bg-purple-100 text-brand-dark border-purple-200 hover:bg-purple-200 transition-colors">
                   <Brain className="w-3 h-3 mr-1" />
                   ИИ-платформа
                 </Badge>
               </motion.div>
-              <h2 className="text-3xl md:text-4xl font-display font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+              <h2 className="text-3xl md:text-4xl font-display font-bold text-brand tracking-tight">
                 О проекте
               </h2>
               <p className="text-lg text-muted-foreground leading-relaxed">
-                Ability School — это EdTech‑платформа, где ИИ помогает учиться и преподавать.
+                {brand.siteName} — это EdTech‑платформа, где ИИ помогает учиться и преподавать.
                 Виртуальные классы, задания с обратной связью и безопасная коммуникация между всеми участниками.
               </p>
             </div>
@@ -155,7 +156,7 @@ const Index = () => {
                 transition={{ duration: 0.2 }}
                 className="flex items-center gap-3 p-3 bg-white/50 rounded-lg border hover:bg-white/70 transition-all duration-200 cursor-pointer"
               >
-                <Users className="w-5 h-5 text-blue-600" />
+                <Users className="w-5 h-5 text-brand" />
                 <span className="text-sm font-medium">Для учеников: занятия, задания, достижения</span>
               </motion.div>
               <motion.div
@@ -163,7 +164,7 @@ const Index = () => {
                 transition={{ duration: 0.2 }}
                 className="flex items-center gap-3 p-3 bg-white/50 rounded-lg border hover:bg-white/70 transition-all duration-200 cursor-pointer"
               >
-                <GraduationCap className="w-5 h-5 text-purple-600" />
+                <GraduationCap className="w-5 h-5 text-brand" />
                 <span className="text-sm font-medium">Для учителей: планирование, аналитика, инструменты</span>
               </motion.div>
               <motion.div
@@ -171,7 +172,7 @@ const Index = () => {
                 transition={{ duration: 0.2 }}
                 className="flex items-center gap-3 p-3 bg-white/50 rounded-lg border hover:bg-white/70 transition-all duration-200 cursor-pointer"
               >
-                <Heart className="w-5 h-5 text-pink-600" />
+                <Heart className="w-5 h-5 text-brand" />
                 <span className="text-sm font-medium">Для родителей: контроль, отчеты, связь</span>
               </motion.div>
               <motion.div
@@ -179,7 +180,7 @@ const Index = () => {
                 transition={{ duration: 0.2 }}
                 className="flex items-center gap-3 p-3 bg-white/50 rounded-lg border hover:bg-white/70 transition-all duration-200 cursor-pointer"
               >
-                <Shield className="w-5 h-5 text-green-600" />
+                <Shield className="w-5 h-5 text-emerald-600" />
                 <span className="text-sm font-medium">Безопасность и конфиденциальность</span>
               </motion.div>
             </div>
@@ -191,7 +192,7 @@ const Index = () => {
           >
             <div className="relative z-10 bg-white/80 backdrop-blur-sm rounded-2xl p-6 shadow-xl border border-white/20">
               <div className="flex items-center gap-3 mb-4">
-                <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse" />
+                <div className="w-3 h-3 bg-emerald-500 rounded-full animate-pulse" />
                 <span className="text-sm font-medium text-gray-600">Статус: Активно</span>
               </div>
               <h3 className="text-xl font-bold mb-3">Технологии платформы</h3>
@@ -223,7 +224,7 @@ const Index = () => {
                 </div>
               </div>
             </div>
-            <div className="absolute -inset-1 bg-gradient-to-r from-blue-500 to-purple-500 rounded-2xl blur opacity-20 group-hover:opacity-30 transition duration-1000 group-hover:duration-200" />
+            <div className="absolute -inset-1 bg-brand/25 rounded-2xl blur opacity-30" />
           </motion.div>
         </div>
       </motion.section>
@@ -231,7 +232,7 @@ const Index = () => {
       {/* Stats Section */}
       <motion.section
         id="stats"
-        className="py-16 md:py-24 bg-gradient-to-br from-indigo-50 to-purple-50 relative"
+        className="py-16 md:py-24 bg-white relative"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.2 }}
@@ -249,7 +250,7 @@ const Index = () => {
               <TrendingUp className="w-3 h-3 mr-1" />
               Платформа в цифрах
             </Badge>
-            <h2 className="text-3xl md:text-4xl font-display font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent mb-4">
+            <h2 className="text-3xl md:text-4xl font-display font-bold text-brand tracking-tight mb-4">
               Достижения платформы
             </h2>
             <p className="text-lg text-muted-foreground">
@@ -259,10 +260,10 @@ const Index = () => {
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {[
-              { icon: Users, value: students, label: "Активных учеников", color: "from-blue-500 to-blue-600" },
-              { icon: Trophy, value: success, label: "Успеваемость", color: "from-green-500 to-green-600" },
-              { icon: Clock, value: "24/7", label: "Доступность", color: "from-purple-500 to-purple-600" },
-              { icon: Star, value: rating, label: "Рейтинг платформы", color: "from-yellow-500 to-yellow-600" }
+              { icon: Users, value: students, label: "Активных учеников", color: "bg-brand" },
+              { icon: Trophy, value: success, label: "Успеваемость", color: "bg-emerald-600" },
+              { icon: Clock, value: "24/7", label: "Доступность", color: "bg-brand-light" },
+              { icon: Star, value: rating, label: "Рейтинг платформы", color: "bg-amber-500" }
             ].map((stat, index) => (
               <motion.div
                 key={stat.label}
@@ -274,13 +275,13 @@ const Index = () => {
                 whileHover={{ scale: 1.05, y: -5 }}
               >
                 <motion.div
-                  className={`w-16 h-16 bg-gradient-to-br ${stat.color} rounded-full flex items-center justify-center mx-auto mb-4 group-hover:shadow-lg transition-all duration-300`}
+                  className={`w-16 h-16 ${stat.color} rounded-full flex items-center justify-center mx-auto mb-4 shadow-brand-shadow group-hover:shadow-lg transition-all duration-300`}
                   whileHover={{ rotate: 360 }}
                   transition={{ duration: 0.6 }}
                 >
                   <stat.icon className="w-8 h-8 text-white" />
                 </motion.div>
-                <div className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-gray-800 to-gray-600 bg-clip-text text-transparent mb-2">
+                <div className="text-3xl md:text-4xl font-bold text-[#1A1A2E] mb-2">
                   {stat.value}
                 </div>
                 <p className="text-sm text-muted-foreground">{stat.label}</p>
@@ -293,7 +294,7 @@ const Index = () => {
       {/* Technology Section */}
       <motion.section
         id="technology"
-        className="py-16 md:py-24 bg-gradient-to-br from-purple-50 to-pink-50 relative"
+        className="py-16 md:py-24 bg-[#FAFAFA] relative"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.2 }}
@@ -307,11 +308,11 @@ const Index = () => {
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
           >
-            <Badge variant="secondary" className="bg-pink-100 text-pink-700 border-pink-200 mb-4">
+            <Badge variant="secondary" className="bg-purple-100 text-brand-dark border-purple-200 mb-4">
               <Zap className="w-3 h-3 mr-1" />
               Технологии
             </Badge>
-            <h2 className="text-3xl md:text-4xl font-display font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent mb-4">
+            <h2 className="text-3xl md:text-4xl font-display font-bold text-brand tracking-tight mb-4">
               Передовые технологии
             </h2>
             <p className="text-lg text-muted-foreground">
@@ -352,7 +353,7 @@ const Index = () => {
                 <Card className="h-full border-0 shadow-xl bg-white/80 backdrop-blur-sm hover:shadow-2xl transition-all duration-300">
                   <CardContent className="p-6">
                     <motion.div
-                      className={`w-12 h-12 bg-gradient-to-br from-purple-500 to-pink-600 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300`}
+                      className="w-12 h-12 bg-brand rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300"
                       whileHover={{ rotate: 360 }}
                       transition={{ duration: 0.6 }}
                     >
@@ -363,7 +364,7 @@ const Index = () => {
                     <div className="space-y-2">
                       {tech.features.map((feature, idx) => (
                         <div key={idx} className="flex items-center gap-2 text-sm">
-                          <CheckCircle className="w-4 h-4 text-green-500" />
+                          <CheckCircle className="w-4 h-4 text-emerald-600" />
                           <span className="text-gray-600">{feature}</span>
                         </div>
                       ))}
@@ -379,7 +380,7 @@ const Index = () => {
       {/* Benefits Section */}
       <motion.section
         id="benefits"
-        className="py-16 md:py-24 bg-gradient-to-br from-pink-50 to-red-50 relative"
+        className="py-16 md:py-24 bg-white relative"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.2 }}
@@ -393,11 +394,11 @@ const Index = () => {
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
           >
-            <Badge variant="secondary" className="bg-red-100 text-red-700 border-red-200 mb-4">
+            <Badge variant="secondary" className="bg-purple-100 text-brand-dark border-purple-200 mb-4">
               <Lightbulb className="w-3 h-3 mr-1" />
               Преимущества
             </Badge>
-            <h2 className="text-3xl md:text-4xl font-display font-bold bg-gradient-to-r from-pink-600 to-red-600 bg-clip-text text-transparent mb-4">
+            <h2 className="text-3xl md:text-4xl font-display font-bold text-brand tracking-tight mb-4">
               Почему выбирают нас
             </h2>
             <p className="text-lg text-muted-foreground">
@@ -449,7 +450,7 @@ const Index = () => {
               >
                 <div className="p-6 bg-white/60 backdrop-blur-sm rounded-xl border border-white/20 hover:bg-white/80 transition-all duration-300 cursor-pointer">
                   <motion.div
-                    className="w-12 h-12 bg-gradient-to-br from-pink-500 to-red-600 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300"
+                    className="w-12 h-12 bg-brand rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300"
                     whileHover={{ rotate: 360 }}
                     transition={{ duration: 0.6 }}
                   >
@@ -470,7 +471,7 @@ const Index = () => {
       {/* CTA Section */}
       <motion.section
         id="cta"
-        className="py-16 md:py-24 bg-gradient-to-br from-red-50 to-orange-50 relative overflow-hidden"
+        className="py-16 md:py-24 bg-[#FAFAFA] relative overflow-hidden"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.2 }}
@@ -479,7 +480,7 @@ const Index = () => {
         {/* Background Elements */}
         <div className="absolute inset-0 overflow-hidden">
           <motion.div
-            className="absolute -top-40 -right-40 w-80 h-80 bg-gradient-to-br from-orange-400/20 to-red-400/20 rounded-full blur-3xl"
+            className="absolute -top-40 -right-40 w-80 h-80 bg-brand/15 rounded-full blur-3xl"
             animate={{
               scale: [1, 1.2, 1],
               opacity: [0.3, 0.5, 0.3]
@@ -491,7 +492,7 @@ const Index = () => {
             }}
           />
           <motion.div
-            className="absolute -bottom-40 -left-40 w-80 h-80 bg-gradient-to-br from-red-400/20 to-pink-400/20 rounded-full blur-3xl"
+            className="absolute -bottom-40 -left-40 w-80 h-80 bg-brand/15 rounded-full blur-3xl"
             animate={{
               scale: [1.2, 1, 1.2],
               opacity: [0.5, 0.3, 0.5]
@@ -518,7 +519,7 @@ const Index = () => {
               whileInView={{ scale: 1, opacity: 1 }}
               transition={{ duration: 0.5, delay: 0.2 }}
               viewport={{ once: true }}
-              className="w-20 h-20 bg-gradient-to-br from-orange-500 to-red-600 rounded-full flex items-center justify-center mx-auto mb-6"
+              className="w-20 h-20 bg-brand rounded-full flex items-center justify-center mx-auto mb-6 shadow-brand-shadow"
             >
               <Sparkles className="w-10 h-10 text-white" />
             </motion.div>
@@ -528,12 +529,12 @@ const Index = () => {
               Начать обучение
             </Badge>
 
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-display font-bold bg-gradient-to-r from-orange-600 to-red-600 bg-clip-text text-transparent mb-6">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-display font-bold text-brand tracking-tight mb-6">
               Готовы к обучению будущего?
             </h2>
 
             <p className="text-lg text-muted-foreground mb-8 leading-relaxed max-w-2xl mx-auto">
-              Присоединяйтесь к тысячам учеников, которые уже используют Ability School для достижения своих образовательных целей
+              Присоединяйтесь к тысячам учеников, которые уже используют {brand.siteName} для достижения своих образовательных целей
             </p>
 
             <motion.div
@@ -549,7 +550,7 @@ const Index = () => {
                 transition={{ duration: 0.2 }}
               >
                 <Link to="/register">
-                  <Button className="h-14 px-8 text-lg bg-gradient-to-r from-orange-600 to-red-600 hover:from-orange-700 hover:to-red-700 text-white font-semibold rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300">
+                  <Button className="h-14 px-8 text-lg bg-brand hover:bg-brand-dark text-white font-semibold rounded-xl shadow-brand-shadow hover:shadow-xl transition-all duration-300">
                     <Rocket className="w-5 h-5 mr-2" />
                     Начать бесплатно
                   </Button>
@@ -576,15 +577,15 @@ const Index = () => {
               viewport={{ once: true }}
             >
               <div className="flex items-center gap-2">
-                <CheckCircle className="w-4 h-4 text-green-500" />
+                <CheckCircle className="w-4 h-4 text-emerald-600" />
                 <span>Бесплатно навсегда</span>
               </div>
               <div className="flex items-center gap-2">
-                <CheckCircle className="w-4 h-4 text-green-500" />
+                <CheckCircle className="w-4 h-4 text-emerald-600" />
                 <span>Без скрытых платежей</span>
               </div>
               <div className="flex items-center gap-2">
-                <CheckCircle className="w-4 h-4 text-green-500" />
+                <CheckCircle className="w-4 h-4 text-emerald-600" />
                 <span>Мгновенная регистрация</span>
               </div>
             </motion.div>

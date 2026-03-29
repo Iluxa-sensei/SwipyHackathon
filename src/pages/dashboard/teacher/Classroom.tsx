@@ -138,12 +138,12 @@ export default function TeacherClassroom() {
   };
 
   const tools = [
-    { name: "Калькулятор", icon: Calculator, color: "bg-blue-500" },
-    { name: "Ручка", icon: PenTool, color: "bg-green-500" },
+    { name: "Калькулятор", icon: Calculator, color: "bg-brand" },
+    { name: "Ручка", icon: PenTool, color: "bg-emerald-500" },
     { name: "Ластик", icon: Eraser, color: "bg-red-500" },
     { name: "Текст", icon: Type, color: "bg-purple-500" },
     { name: "Изображение", icon: Image, color: "bg-yellow-500" },
-    { name: "Файл", icon: FileText, color: "bg-indigo-500" },
+    { name: "Файл", icon: FileText, color: "bg-brand" },
     { name: "Ссылка", icon: Link, color: "bg-pink-500" },
     { name: "Эмодзи", icon: Smile, color: "bg-orange-500" }
   ];
@@ -161,10 +161,10 @@ export default function TeacherClassroom() {
         {notifications.map((notification) => (
           <div
             key={notification.id}
-            className={`p-3 rounded-lg shadow-lg flex items-center gap-2 text-white animate-in slide-in-from-right ${notification.type === 'success' ? 'bg-green-500' :
+            className={`p-3 rounded-lg shadow-lg flex items-center gap-2 text-white animate-in slide-in-from-right ${notification.type === 'success' ? 'bg-emerald-500' :
               notification.type === 'warning' ? 'bg-yellow-500' :
                 notification.type === 'error' ? 'bg-red-500' :
-                  'bg-blue-500'
+                  'bg-brand'
               }`}
           >
             {notification.type === 'success' && <CheckCircle className="w-4 h-4" />}
@@ -184,7 +184,7 @@ export default function TeacherClassroom() {
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-4">
                 <div className="flex items-center gap-2">
-                  <div className={`w-3 h-3 rounded-full ${connectionQuality === 'excellent' ? 'bg-green-500' :
+                  <div className={`w-3 h-3 rounded-full ${connectionQuality === 'excellent' ? 'bg-emerald-500' :
                     connectionQuality === 'good' ? 'bg-yellow-500' :
                       'bg-red-500'
                     }`}></div>
@@ -194,7 +194,7 @@ export default function TeacherClassroom() {
                         'Плохое соединение'}
                   </span>
                 </div>
-                <Badge variant="outline" className="bg-green-100 text-green-800">
+                <Badge variant="outline" className="bg-emerald-50 text-emerald-800">
                   Урок активен
                 </Badge>
                 <div className="flex items-center gap-2 text-sm text-gray-600">
@@ -232,7 +232,7 @@ export default function TeacherClassroom() {
                 <h2 className="text-2xl font-bold mb-2">Виртуальный класс</h2>
                 <p className="text-gray-300">Урок: {currentActivity}</p>
                 <div className="mt-4 flex items-center justify-center gap-4">
-                  <Badge className="bg-blue-500">
+                  <Badge className="bg-brand">
                     {students.filter(s => s.isOnline).length} участников
                   </Badge>
                   <Badge className="bg-yellow-500">
@@ -294,7 +294,7 @@ export default function TeacherClassroom() {
                 variant={isTimerRunning ? "default" : "outline"}
                 size="lg"
                 onClick={toggleLessonStatus}
-                className={isTimerRunning ? "bg-green-500 hover:bg-green-600" : ""}
+                className={isTimerRunning ? "bg-emerald-500 hover:bg-emerald-600" : ""}
               >
                 {isTimerRunning ? <Pause className="w-5 h-5" /> : <Play className="w-5 h-5" />}
               </Button>
@@ -364,7 +364,7 @@ export default function TeacherClassroom() {
                       <div className="w-8 h-8 bg-gray-300 rounded-full flex items-center justify-center relative">
                         <span className="text-sm font-medium">{student.name.split(' ').map(n => n[0]).join('')}</span>
                         {student.isSpeaking && (
-                          <div className="absolute -top-1 -right-1 w-3 h-3 bg-green-500 rounded-full"></div>
+                          <div className="absolute -top-1 -right-1 w-3 h-3 bg-emerald-500 rounded-full"></div>
                         )}
                       </div>
                       <div className="flex-1">
@@ -378,7 +378,7 @@ export default function TeacherClassroom() {
                           )}
                         </div>
                         <div className="flex items-center gap-1">
-                          <div className={`w-2 h-2 rounded-full ${student.isOnline ? 'bg-green-500' : 'bg-gray-400'}`}></div>
+                          <div className={`w-2 h-2 rounded-full ${student.isOnline ? 'bg-emerald-500' : 'bg-gray-400'}`}></div>
                           <span className="text-xs text-gray-500">{student.isOnline ? 'Онлайн' : 'Офлайн'}</span>
                         </div>
                       </div>
@@ -422,7 +422,7 @@ export default function TeacherClassroom() {
                   {chatMessages.map((message) => (
                     <div key={message.id} className={`flex ${message.isTeacher ? 'justify-end' : 'justify-start'}`}>
                       <div className={`max-w-[80%] p-3 rounded-lg ${message.isTeacher
-                        ? 'bg-blue-500 text-white'
+                        ? 'bg-brand text-white'
                         : 'bg-gray-100 text-gray-900'
                         }`}>
                         <div className="text-xs font-medium mb-1">{message.user}</div>

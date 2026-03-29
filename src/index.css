@@ -2,93 +2,93 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+/* Aqbobek International School — design tokens (HSL for shadcn compatibility). */
 
 @layer base {
   :root {
-    /* Brand palette: cool blue + violet on clean white */
-    --background: 0 0% 100%;
-    --foreground: 224 71% 4%;
+    --background: 0 0% 98%;
+    --foreground: 240 33% 14%;
 
     --card: 0 0% 100%;
-    --card-foreground: 224 71% 4%;
+    --card-foreground: 240 33% 14%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 224 71% 4%;
+    --popover-foreground: 240 33% 14%;
 
-    /* Core brand */
+    --primary: 273 67% 39%;
+    --primary-foreground: 0 0% 100%;
 
-    --secondary-foreground: 258 60% 22%;
+    --secondary: 270 40% 96%;
+    --secondary-foreground: 273 67% 28%;
 
     --muted: 220 14% 96%;
-    --muted-foreground: 224 15% 45%;
+    --muted-foreground: 220 9% 46%;
 
+    --accent: 270 40% 96%;
+    --accent-foreground: 273 67% 28%;
 
-    --accent-foreground: 210 40% 98%;
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
 
-    --destructive: 0 72% 50%;
-    --destructive-foreground: 210 40% 98%;
+    --success: 142 71% 45%;
+    --warning: 32 95% 44%;
+    --danger: 0 72% 51%;
 
-    --border: 220 16% 90%;
-    --input: 220 16% 90%;
-    --ring: 258 85% 60%;
+    --border: 220 13% 91%;
+    --input: 220 13% 91%;
+    --ring: 271 91% 56%;
 
     --radius: 0.75rem;
 
-    /* Sidebar tokens (kept for components) */
-    --sidebar-background: 0 0% 98%;
-    --sidebar-foreground: 240 5.3% 26.1%;
-    --sidebar-primary: 258 85% 60%;
-    --sidebar-primary-foreground: 0 0% 98%;
-    --sidebar-accent: 240 4.8% 95.9%;
-    --sidebar-accent-foreground: 240 5.9% 10%;
-    --sidebar-border: 220 13% 91%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --sidebar-background: 273 67% 39%;
+    --sidebar-foreground: 0 0% 100%;
+    --sidebar-primary: 263 80% 58%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 263 80% 58%;
+    --sidebar-accent-foreground: 0 0% 100%;
+    --sidebar-border: 273 50% 32%;
+    --sidebar-ring: 263 80% 58%;
 
-    /* Effects */
-    --gradient-primary: linear-gradient(135deg, hsl(var(--accent)), hsl(var(--primary)));
-    --shadow-elevated: 0 10px 30px -10px hsl(var(--accent) / 0.35);
+    --shadow-elevated: 0 4px 24px rgba(107, 33, 168, 0.15);
   }
 
   .dark {
-    --background: 224 71% 4%;
-    --foreground: 210 40% 98%;
+    --background: 240 33% 8%;
+    --foreground: 0 0% 98%;
 
-    --card: 224 71% 6%;
-    --card-foreground: 210 40% 98%;
+    --card: 240 33% 10%;
+    --card-foreground: 0 0% 98%;
 
-    --popover: 224 71% 6%;
-    --popover-foreground: 210 40% 98%;
+    --popover: 240 33% 10%;
+    --popover-foreground: 0 0% 98%;
 
-    --primary: 258 100% 70%;
-    --primary-foreground: 224 71% 6%;
+    --primary: 271 91% 56%;
+    --primary-foreground: 240 33% 8%;
 
-    --secondary: 240 23% 13%;
-    --secondary-foreground: 210 40% 98%;
+    --secondary: 273 40% 18%;
+    --secondary-foreground: 0 0% 98%;
 
-    --muted: 240 23% 13%;
-    --muted-foreground: 215 20% 65%;
+    --muted: 273 30% 18%;
+    --muted-foreground: 220 14% 65%;
 
-    --accent: 220 98% 61%;
-    --accent-foreground: 210 40% 98%;
+    --accent: 273 40% 22%;
+    --accent-foreground: 0 0% 98%;
 
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 45%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 240 23% 22%;
-    --input: 240 23% 22%;
-    --ring: 220 98% 61%;
+    --border: 273 30% 22%;
+    --input: 273 30% 22%;
+    --ring: 271 91% 56%;
 
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 258 100% 70%;
+    --sidebar-background: 273 67% 28%;
+    --sidebar-foreground: 0 0% 98%;
+    --sidebar-primary: 263 80% 58%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --sidebar-accent: 263 80% 58%;
+    --sidebar-accent-foreground: 0 0% 100%;
+    --sidebar-border: 273 40% 24%;
+    --sidebar-ring: 263 80% 58%;
   }
 }
 
@@ -98,21 +98,28 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-background text-foreground;
-    font-family: theme(fontFamily.sans);
+    @apply bg-background text-foreground font-sans text-gray-700;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-bold tracking-tight text-brand;
   }
 }
 
 @layer utilities {
   .bg-gradient-primary {
-    background-image: var(--gradient-primary);
+    @apply bg-primary;
   }
 
   .text-gradient {
-    background-image: var(--gradient-primary);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
+    @apply text-brand;
+  }
+
+  .shadow-elevated {
+    box-shadow: var(--shadow-elevated);
   }
 
   .story-link::after {
@@ -132,25 +139,4 @@ All colors MUST be HSL.
     transform: scaleX(1);
     transform-origin: left;
   }
-
-  /* Gradient animation for Ability School */
-  @keyframes gradient-x {
-
-    0%,
-    100% {
-      background-size: 200% 200%;
-      background-position: left center;
-    }
-
-    50% {
-      background-size: 200% 200%;
-      background-position: right center;
-    }
-  }
-
-  .animate-gradient-x {
-    animation: gradient-x 3s ease infinite;
-    background-size: 200% 200%;
-  }
-
 }

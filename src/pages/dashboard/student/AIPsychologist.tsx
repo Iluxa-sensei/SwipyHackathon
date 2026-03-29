@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { pageTitle } from "@/lib/page-title";
 import { Heart, Brain, Smile, Frown, Calendar, TrendingUp, MessageSquare, BookOpen, Activity, Target, Send, X, CheckCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -9,7 +10,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from 
 
 const StudentAIPsychologist = () => {
   useEffect(() => {
-    document.title = "AI‑психолог — Ученик | Ability School";
+    document.title = pageTitle("AI‑психолог — Ученик");
   }, []);
 
   const [currentMood, setCurrentMood] = useState("happy");
@@ -59,7 +60,7 @@ const StudentAIPsychologist = () => {
 
   const getMoodColor = (mood: string) => {
     switch (mood) {
-      case "happy": return "text-green-600";
+      case "happy": return "text-emerald-600";
       case "neutral": return "text-yellow-600";
       case "sad": return "text-red-600";
       default: return "text-gray-600";
@@ -282,7 +283,7 @@ const StudentAIPsychologist = () => {
                 {chatMessages.map((message) => (
                   <div key={message.id} className={`flex ${message.sender === 'user' ? 'justify-end' : 'justify-start'}`}>
                     <div className={`max-w-[80%] p-3 rounded-lg ${message.sender === 'user'
-                      ? 'bg-blue-600 text-white'
+                      ? 'bg-brand text-white'
                       : 'bg-gray-100 text-gray-900'
                       }`}>
                       <p className="text-sm">{message.text}</p>
@@ -312,9 +313,9 @@ const StudentAIPsychologist = () => {
 
       {/* Current Mood */}
       <div className="grid md:grid-cols-2 gap-6">
-        <div className="p-6 rounded-xl border bg-gradient-to-br from-blue-50 to-blue-100">
+        <div className="p-6 rounded-xl border bg-purple-50 border border-purple-100">
           <h3 className="font-semibold mb-4 flex items-center gap-2">
-            <Heart className="w-4 h-4 text-blue-600" />
+            <Heart className="w-4 h-4 text-brand" />
             Как вы себя чувствуете сегодня?
           </h3>
           <div className="grid grid-cols-3 gap-3">
@@ -323,7 +324,7 @@ const StudentAIPsychologist = () => {
                 key={mood}
                 variant={currentMood === mood ? "default" : "outline"}
                 onClick={() => handleMoodChange(mood)}
-                className={`flex flex-col items-center gap-2 p-4 h-auto transition-all ${currentMood === mood ? "bg-blue-600 hover:bg-blue-700 scale-105" : "hover:scale-105"
+                className={`flex flex-col items-center gap-2 p-4 h-auto transition-all ${currentMood === mood ? "bg-brand hover:bg-brand scale-105" : "hover:scale-105"
                   }`}
               >
                 <span className="text-2xl">{getMoodIcon(mood)}</span>
@@ -335,9 +336,9 @@ const StudentAIPsychologist = () => {
           </div>
         </div>
 
-        <div className="p-6 rounded-xl border bg-gradient-to-br from-green-50 to-green-100">
+        <div className="p-6 rounded-xl border bg-purple-50/90 border border-purple-100">
           <h3 className="font-semibold mb-4 flex items-center gap-2">
-            <TrendingUp className="w-4 h-4 text-green-600" />
+            <TrendingUp className="w-4 h-4 text-emerald-600" />
             Настроение за неделю
           </h3>
           <div className="space-y-3">
@@ -359,7 +360,7 @@ const StudentAIPsychologist = () => {
       {/* Daily Activities */}
       <div className="p-6 rounded-xl border bg-card">
         <h3 className="font-semibold mb-4 flex items-center gap-2">
-          <Activity className="w-4 h-4 text-purple-600" />
+          <Activity className="w-4 h-4 text-brand" />
           Рекомендуемые активности
         </h3>
         <div className="grid md:grid-cols-2 gap-4">
@@ -373,7 +374,7 @@ const StudentAIPsychologist = () => {
               <Button
                 size="sm"
                 variant={activity.completed ? "outline" : "default"}
-                className={activity.completed ? "text-green-600 border-green-200" : ""}
+                className={activity.completed ? "text-emerald-600 border-emerald-200" : ""}
                 onClick={() => handleActivityToggle(index)}
               >
                 {activity.completed ? "✓ Выполнено" : "Начать"}
@@ -387,7 +388,7 @@ const StudentAIPsychologist = () => {
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
         <div className="p-4 rounded-xl border bg-card">
           <div className="flex items-center gap-3">
-            <div className="p-2 rounded-lg bg-green-100 text-green-600">
+            <div className="p-2 rounded-lg bg-emerald-50 text-emerald-600">
               <Smile className="w-5 h-5" />
             </div>
             <div>
@@ -398,7 +399,7 @@ const StudentAIPsychologist = () => {
         </div>
         <div className="p-4 rounded-xl border bg-card">
           <div className="flex items-center gap-3">
-            <div className="p-2 rounded-lg bg-blue-100 text-blue-600">
+            <div className="p-2 rounded-lg bg-purple-100 text-brand">
               <Brain className="w-5 h-5" />
             </div>
             <div>
@@ -409,7 +410,7 @@ const StudentAIPsychologist = () => {
         </div>
         <div className="p-4 rounded-xl border bg-card">
           <div className="flex items-center gap-3">
-            <div className="p-2 rounded-lg bg-purple-100 text-purple-600">
+            <div className="p-2 rounded-lg bg-purple-100 text-brand">
               <Target className="w-5 h-5" />
             </div>
             <div>
@@ -433,7 +434,7 @@ const StudentAIPsychologist = () => {
 
       {/* Quick Actions */}
       <div className="grid md:grid-cols-3 gap-4">
-        <div className="p-6 rounded-xl border bg-gradient-to-br from-pink-50 to-pink-100">
+        <div className="p-6 rounded-xl border border-purple-100 bg-purple-50">
           <h3 className="font-semibold mb-4 flex items-center gap-2">
             <MessageSquare className="w-4 h-4 text-pink-600" />
             Дневник настроения
@@ -494,9 +495,9 @@ const StudentAIPsychologist = () => {
           </Dialog>
         </div>
 
-        <div className="p-6 rounded-xl border bg-gradient-to-br from-indigo-50 to-indigo-100">
+        <div className="p-6 rounded-xl border bg-purple-50 border border-purple-100">
           <h3 className="font-semibold mb-4 flex items-center gap-2">
-            <BookOpen className="w-4 h-4 text-indigo-600" />
+            <BookOpen className="w-4 h-4 text-brand" />
             Техники релаксации
           </h3>
           <p className="text-sm text-muted-foreground mb-4">
@@ -504,7 +505,7 @@ const StudentAIPsychologist = () => {
           </p>
           <Dialog open={relaxationOpen} onOpenChange={setRelaxationOpen}>
             <DialogTrigger asChild>
-              <Button size="sm" className="bg-indigo-600 hover:bg-indigo-700">
+              <Button size="sm" className="bg-brand hover:bg-brand-dark rounded-xl">
                 Начать упражнение
               </Button>
             </DialogTrigger>
@@ -546,7 +547,7 @@ const StudentAIPsychologist = () => {
                   </Button>
                 </div>
                 {currentRelaxation && (
-                  <div className="p-4 bg-blue-50 rounded-lg">
+                  <div className="p-4 bg-purple-50 rounded-lg">
                     <h4 className="font-medium mb-2">Инструкции:</h4>
                     <p className="text-sm text-muted-foreground">
                       {currentRelaxation === 'breathing' && "Сядьте удобно, закройте глаза. Вдохните на 4 счета, задержите дыхание на 7 счетов, выдохните на 8 счетов. Повторите 4-5 раз."}
@@ -560,15 +561,15 @@ const StudentAIPsychologist = () => {
           </Dialog>
         </div>
 
-        <div className="p-6 rounded-xl border bg-gradient-to-br from-teal-50 to-teal-100">
+        <div className="p-6 rounded-xl border bg-purple-50 border border-purple-100">
           <h3 className="font-semibold mb-4 flex items-center gap-2">
-            <Heart className="w-4 h-4 text-teal-600" />
+            <Heart className="w-4 h-4 text-brand" />
             Рекомендации
           </h3>
           <p className="text-sm text-muted-foreground mb-4">
             Персональные советы от ИИ
           </p>
-          <Button size="sm" className="bg-teal-600 hover:bg-teal-700" onClick={handleGetRecommendations}>
+          <Button size="sm" className="bg-brand hover:bg-brand-dark rounded-xl" onClick={handleGetRecommendations}>
             Получить совет
           </Button>
         </div>
@@ -577,17 +578,17 @@ const StudentAIPsychologist = () => {
       {/* Recent Insights */}
       <div className="p-6 rounded-xl border bg-card">
         <h3 className="font-semibold mb-4 flex items-center gap-2">
-          <Brain className="w-4 h-4 text-blue-600" />
+          <Brain className="w-4 h-4 text-brand" />
           Последние инсайты
         </h3>
         <div className="space-y-3">
-          <div className="p-3 rounded-lg bg-blue-50 border border-blue-200">
+          <div className="p-3 rounded-lg bg-purple-50 border border-purple-200">
             <p className="text-sm">
               <span className="font-semibold">Заметка:</span> Вы лучше всего себя чувствуете после физической активности.
               Попробуйте добавить 15 минут упражнений в день.
             </p>
           </div>
-          <div className="p-3 rounded-lg bg-green-50 border border-green-200">
+          <div className="p-3 rounded-lg bg-emerald-50 border border-emerald-200">
             <p className="text-sm">
               <span className="font-semibold">Прогресс:</span> Ваше настроение улучшилось на 20% за последнюю неделю.
               Продолжайте практиковать техники релаксации.

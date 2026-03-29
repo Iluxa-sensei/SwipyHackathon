@@ -1,11 +1,12 @@
 import { useEffect } from "react";
+import { pageTitle } from "@/lib/page-title";
 import { Calendar, Clock, BookOpen, Users, Video, MapPin } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 
 const StudentSchedule = () => {
   useEffect(() => {
-    document.title = "Расписание — Ученик | Ability School";
+    document.title = pageTitle("Расписание — Ученик");
   }, []);
 
   const scheduleData = [
@@ -40,8 +41,8 @@ const StudentSchedule = () => {
 
   const getStatusColor = (status: string) => {
     switch (status) {
-      case "current": return "bg-green-100 text-green-800 border-green-200";
-      case "upcoming": return "bg-blue-100 text-blue-800 border-blue-200";
+      case "current": return "bg-emerald-50 text-emerald-800 border-emerald-200";
+      case "upcoming": return "bg-purple-100 text-brand-dark border-purple-200";
       default: return "bg-gray-100 text-gray-800 border-gray-200";
     }
   };
@@ -73,14 +74,14 @@ const StudentSchedule = () => {
             <div className="flex items-start justify-between">
               <div className="flex items-start gap-4">
                 <div className="flex flex-col items-center bg-white/80 rounded-lg p-3 min-w-[60px]">
-                  <Clock className="w-4 h-4 text-blue-600 mb-1" />
+                  <Clock className="w-4 h-4 text-brand mb-1" />
                   <span className="text-sm font-semibold">{lesson.time}</span>
                   <span className="text-xs text-muted-foreground">{lesson.duration}</span>
                 </div>
 
                 <div className="flex-1">
                   <div className="flex items-center gap-2 mb-2">
-                    <BookOpen className="w-4 h-4 text-blue-600" />
+                    <BookOpen className="w-4 h-4 text-brand" />
                     <h3 className="font-semibold text-lg">{lesson.subject}</h3>
                     <Badge variant="secondary" className="text-xs">
                       {getStatusIcon(lesson.status)} {lesson.status === "current" ? "Сейчас" : "Скоро"}
@@ -106,7 +107,7 @@ const StudentSchedule = () => {
 
               <div className="flex flex-col gap-2">
                 {lesson.status === "current" && (
-                  <Button size="sm" className="bg-green-600 hover:bg-green-700 text-white">
+                  <Button size="sm" className="bg-emerald-600 hover:bg-emerald-700 text-white">
                     Присоединиться
                   </Button>
                 )}
@@ -122,17 +123,17 @@ const StudentSchedule = () => {
       </div>
 
       <div className="grid md:grid-cols-2 gap-4 mt-6">
-        <div className="p-6 rounded-xl border bg-gradient-to-br from-blue-50 to-blue-100">
+        <div className="p-6 rounded-xl border bg-purple-50 border border-purple-100">
           <h3 className="font-semibold mb-2 flex items-center gap-2">
-            <Calendar className="w-4 h-4 text-blue-600" />
+            <Calendar className="w-4 h-4 text-brand" />
             Завтра
           </h3>
           <p className="text-sm text-muted-foreground">3 урока: Физика, История, Литература</p>
         </div>
 
-        <div className="p-6 rounded-xl border bg-gradient-to-br from-green-50 to-green-100">
+        <div className="p-6 rounded-xl border bg-purple-50/90 border border-purple-100">
           <h3 className="font-semibold mb-2 flex items-center gap-2">
-            <BookOpen className="w-4 h-4 text-green-600" />
+            <BookOpen className="w-4 h-4 text-emerald-600" />
             Прогресс недели
           </h3>
           <p className="text-sm text-muted-foreground">15 из 20 уроков завершено</p>

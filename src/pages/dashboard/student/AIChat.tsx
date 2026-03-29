@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { pageTitle } from "@/lib/page-title";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { useGLTF, useAnimations } from "@react-three/drei";
 import { Mic, Send, Square, BookOpen, Lightbulb, Target, HelpCircle, ChevronRight, Plus, Bot, ChevronDown, Sparkles, Brain, GraduationCap, Zap } from "lucide-react";
@@ -643,7 +644,7 @@ const StudentAIChat = () => {
   }, [input]);
 
   useEffect(() => {
-    document.title = "ИИ‑чат — Ученик | Ability School";
+    document.title = pageTitle("ИИ‑чат — Ученик");
   }, []);
 
   const SUBJECTS = useMemo(
@@ -766,15 +767,15 @@ const StudentAIChat = () => {
   const [subjectsOpen, setSubjectsOpen] = useState(false);
 
   return (
-    <section className="relative min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50">
+    <section className="relative min-h-screen bg-[#FAFAFA]">
       <div className="container mx-auto px-4 py-6">
         {/* Header */}
         <div className="text-center mb-8">
           <div className="flex items-center justify-center gap-3 mb-4">
-            <div className="p-3 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full">
+            <div className="p-3 bg-brand rounded-full">
               <Brain className="w-8 h-8 text-white" />
             </div>
-            <h1 className="text-4xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+            <h1 className="text-4xl font-bold text-brand tracking-tight">
               ИИ‑Помощник
             </h1>
           </div>
@@ -788,7 +789,7 @@ const StudentAIChat = () => {
           {/* Chat Section - Left Side (70%) */}
           <div className="flex-1 bg-white rounded-2xl shadow-xl border border-gray-200/50 overflow-hidden">
             {/* Chat Header */}
-            <div className="bg-gradient-to-r from-blue-500 to-purple-600 p-6 text-white">
+            <div className="bg-brand p-6 text-white">
               <div className="flex items-center gap-3 mb-4">
                 <GraduationCap className="w-6 h-6" />
                 <h2 className="text-xl font-semibold">Умный чат</h2>
@@ -852,7 +853,7 @@ const StudentAIChat = () => {
             <div className="flex-1 p-6 h-[500px] overflow-hidden flex flex-col">
               <div
                 ref={chatContainerRef}
-                className="flex-1 overflow-y-auto space-y-4 pr-2 scrollbar-thin scrollbar-thumb-blue-200 scrollbar-track-transparent"
+                className="flex-1 overflow-y-auto space-y-4 pr-2 scrollbar-thin scrollbar-thumb-purple-200 scrollbar-track-transparent"
               >
                 {ttsError && (
                   <div className="text-sm text-red-600 bg-red-50 border border-red-200 rounded-lg p-4 backdrop-blur-sm animate-in slide-in-from-top-2">
@@ -863,8 +864,8 @@ const StudentAIChat = () => {
                 {messages.length === 0 && (
                   <div className="text-center py-12">
                     <div className="flex justify-center mb-4">
-                      <div className="p-4 bg-gradient-to-r from-blue-100 to-purple-100 rounded-full">
-                        <Bot className="w-12 h-12 text-blue-600" />
+                      <div className="p-4 bg-purple-100 rounded-full">
+                        <Bot className="w-12 h-12 text-brand" />
                       </div>
                     </div>
                     <h3 className="text-lg font-semibold text-gray-800 mb-2">
@@ -883,13 +884,13 @@ const StudentAIChat = () => {
                       }`}
                   >
                     {m.role === "assistant" && (
-                      <div className="w-8 h-8 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex items-center justify-center flex-shrink-0">
+                      <div className="w-8 h-8 bg-brand rounded-full flex items-center justify-center flex-shrink-0">
                         <Bot className="w-4 h-4 text-white" />
                       </div>
                     )}
                     <div
                       className={`max-w-[80%] p-4 rounded-2xl shadow-sm transition-all duration-200 ${m.role === "user"
-                        ? "bg-gradient-to-r from-blue-500 to-blue-600 text-white"
+                        ? "bg-brand text-white"
                         : "bg-gray-50 border border-gray-200"
                         }`}
                     >
@@ -898,7 +899,7 @@ const StudentAIChat = () => {
                       </div>
                     </div>
                     {m.role === "user" && (
-                      <div className="w-8 h-8 bg-gradient-to-r from-gray-500 to-gray-600 rounded-full flex items-center justify-center flex-shrink-0">
+                      <div className="w-8 h-8 bg-gray-600 rounded-full flex items-center justify-center flex-shrink-0">
                         <span className="text-white text-sm font-medium">Я</span>
                       </div>
                     )}
@@ -907,14 +908,14 @@ const StudentAIChat = () => {
 
                 {loading && (
                   <div className="flex gap-3 animate-in slide-in-from-bottom-2 duration-300">
-                    <div className="w-8 h-8 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex items-center justify-center flex-shrink-0">
+                    <div className="w-8 h-8 bg-brand rounded-full flex items-center justify-center flex-shrink-0">
                       <Bot className="w-4 h-4 text-white" />
                     </div>
                     <div className="bg-gray-50 border border-gray-200 rounded-2xl p-4">
                       <div className="flex items-center gap-2">
-                        <div className="w-2 h-2 bg-blue-500 rounded-full animate-bounce"></div>
-                        <div className="w-2 h-2 bg-blue-500 rounded-full animate-bounce" style={{ animationDelay: '0.1s' }}></div>
-                        <div className="w-2 h-2 bg-blue-500 rounded-full animate-bounce" style={{ animationDelay: '0.2s' }}></div>
+                        <div className="w-2 h-2 bg-brand rounded-full animate-bounce"></div>
+                        <div className="w-2 h-2 bg-brand rounded-full animate-bounce" style={{ animationDelay: '0.1s' }}></div>
+                        <div className="w-2 h-2 bg-brand rounded-full animate-bounce" style={{ animationDelay: '0.2s' }}></div>
                       </div>
                     </div>
                   </div>
@@ -928,8 +929,8 @@ const StudentAIChat = () => {
                     size="sm"
                     variant={mode === "explain" ? "default" : "outline"}
                     className={`transition-all duration-200 ${mode === "explain"
-                      ? "bg-blue-600 hover:bg-blue-700 text-white shadow-lg"
-                      : "hover:bg-blue-50 hover:border-blue-300 text-gray-800"
+                      ? "bg-brand hover:bg-brand text-white shadow-lg"
+                      : "hover:bg-purple-50 hover:border-purple-200 text-gray-800"
                       }`}
                     onClick={() => {
                       setMode("explain");
@@ -945,8 +946,8 @@ const StudentAIChat = () => {
                     size="sm"
                     variant={mode === "examples" ? "default" : "outline"}
                     className={`transition-all duration-200 ${mode === "examples"
-                      ? "bg-green-600 hover:bg-green-700 text-white shadow-lg"
-                      : "hover:bg-green-50 hover:border-green-300 text-gray-800"
+                      ? "bg-emerald-600 hover:bg-emerald-700 text-white shadow-lg"
+                      : "hover:bg-emerald-50 hover:border-green-300 text-gray-800"
                       }`}
                     onClick={() => {
                       setMode("examples");
@@ -962,7 +963,7 @@ const StudentAIChat = () => {
                     size="sm"
                     variant={mode === "quiz" ? "default" : "outline"}
                     className={`transition-all duration-200 ${mode === "quiz"
-                      ? "bg-purple-600 hover:bg-purple-700 text-white shadow-lg"
+                      ? "bg-brand hover:bg-brand-dark text-white shadow-lg rounded-xl"
                       : "hover:bg-purple-50 hover:border-purple-300 text-gray-800"
                       }`}
                     onClick={() => {
@@ -990,7 +991,7 @@ const StudentAIChat = () => {
                     <Button
                       size="sm"
                       variant="secondary"
-                      className="bg-blue-100 text-blue-700 hover:bg-blue-200 transition-all duration-200"
+                      className="bg-purple-100 text-brand-dark hover:bg-purple-200 transition-all duration-200"
                       onClick={() => handleSendWithContent("Далее")}
                     >
                       Далее
@@ -1001,7 +1002,7 @@ const StudentAIChat = () => {
                     <Button
                       size="sm"
                       variant="secondary"
-                      className="bg-green-100 text-green-700 hover:bg-green-200 transition-all duration-200"
+                      className="bg-emerald-50 text-emerald-700 hover:bg-green-200 transition-all duration-200"
                       onClick={() => handleSendWithContent("Еще пример")}
                     >
                       Еще пример
@@ -1051,13 +1052,13 @@ const StudentAIChat = () => {
                     value={input}
                     onChange={(e) => setInput(e.target.value)}
                     onKeyDown={onKeyDown}
-                    className="flex-1 border-0 bg-gray-50 px-4 py-3 rounded-lg focus:bg-white focus:ring-2 focus:ring-blue-500 transition-all duration-200 text-sm"
+                    className="flex-1 border-0 bg-gray-50 px-4 py-3 rounded-lg focus:bg-white focus:ring-2 focus:ring-purple-500 transition-all duration-200 text-sm"
                     placeholder="Спросите что‑нибудь…"
                   />
                   <Button
                     onClick={handleSend}
                     disabled={loading}
-                    className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white px-6 py-3 rounded-lg shadow-lg transition-all duration-200 hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="bg-brand hover:bg-brand-dark text-white px-6 py-3 rounded-lg shadow-lg transition-all duration-200 hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed"
                   >
                     {loading ? (
                       <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
@@ -1107,7 +1108,7 @@ const StudentAIChat = () => {
                       id="autoSend"
                       checked={autoSendOnMicStop}
                       onChange={(e) => setAutoSendOnMicStop(e.target.checked)}
-                      className="rounded border-gray-300 text-blue-600 focus:ring-blue-500"
+                      className="rounded border-gray-300 text-brand focus:ring-purple-500"
                     />
                     <label htmlFor="autoSend" className="text-sm text-gray-600">
                       Авто‑отправка после записи
@@ -1119,12 +1120,12 @@ const StudentAIChat = () => {
           </div>
 
           {/* 3D Avatar Section - Right Side (30%) */}
-          <div className="w-[400px] bg-gradient-to-br from-blue-50 to-purple-50 rounded-2xl shadow-xl border border-gray-200/50 overflow-hidden relative group">
+          <div className="w-[400px] bg-purple-50 border border-purple-100 rounded-2xl shadow-xl border border-gray-200/50 overflow-hidden relative group">
             {/* Animated background elements */}
             <div className="absolute inset-0 opacity-20">
-              <div className="absolute top-10 left-10 w-20 h-20 bg-blue-400 rounded-full blur-xl animate-pulse"></div>
+              <div className="absolute top-10 left-10 w-20 h-20 bg-brand/30 rounded-full blur-xl animate-pulse"></div>
               <div className="absolute bottom-20 right-10 w-16 h-16 bg-purple-400 rounded-full blur-xl animate-pulse" style={{ animationDelay: '1s' }}></div>
-              <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-32 h-32 bg-gradient-to-r from-blue-300 to-purple-300 rounded-full blur-2xl opacity-30 animate-pulse" style={{ animationDelay: '2s' }}></div>
+              <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-32 h-32 bg-brand-light/40 rounded-full blur-2xl opacity-30 animate-pulse" style={{ animationDelay: '2s' }}></div>
             </div>
 
             <div className="h-full relative z-10">
@@ -1138,7 +1139,7 @@ const StudentAIChat = () => {
               {/* Avatar Info Overlay */}
               <div className="absolute bottom-4 left-4 right-4 bg-white/90 backdrop-blur-md rounded-xl p-4 border border-white/20 shadow-lg transform transition-all duration-300 group-hover:scale-105">
                 <div className="text-center">
-                  <div className={`w-16 h-16 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full mx-auto mb-3 flex items-center justify-center transition-all duration-300 ${isSpeaking ? 'pulse-glow' : ''}`}>
+                  <div className={`w-16 h-16 bg-brand rounded-full mx-auto mb-3 flex items-center justify-center transition-all duration-300 ${isSpeaking ? 'pulse-glow' : ''}`}>
                     <Bot className="w-8 h-8 text-white" />
                   </div>
                   <h3 className="font-semibold text-gray-800 mb-1">ИИ‑Ассистент</h3>
@@ -1153,7 +1154,7 @@ const StudentAIChat = () => {
 
                   {/* Status indicator */}
                   <div className="mt-3 flex items-center justify-center gap-2">
-                    <div className={`w-2 h-2 rounded-full ${isSpeaking ? 'bg-green-500 animate-pulse' : 'bg-blue-500'}`}></div>
+                    <div className={`w-2 h-2 rounded-full ${isSpeaking ? 'bg-emerald-500 animate-pulse' : 'bg-brand'}`}></div>
                     <span className="text-xs text-gray-500">
                       {isSpeaking ? 'Активен' : 'Онлайн'}
                     </span>

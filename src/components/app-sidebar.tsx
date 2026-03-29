@@ -25,6 +25,7 @@ import {
   User,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { brand } from "@config/brand";
 
 const studentItems = [
   { title: "Расписание", url: "/dashboard/student/schedule", icon: Calendar },
@@ -63,15 +64,22 @@ export function AppSidebar() {
 
   const getNavCls = ({ isActive }: { isActive: boolean }) =>
     cn(
-      "relative flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium transition-all duration-200 hover:bg-accent hover:text-accent-foreground",
-      isActive && "text-purple-600 font-semibold"
+      "relative flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium text-white/90 transition-all duration-200 hover:bg-white/10",
+      isActive && "bg-[#7C3AED] font-semibold text-white shadow-sm"
     );
 
   return (
-    <Sidebar collapsible="icon" className="w-60 border-r">
+    <Sidebar collapsible="icon" className="w-60 border-r border-sidebar-border bg-sidebar text-sidebar-foreground">
       <SidebarContent className="p-4">
+        <div className="mb-4 px-2">
+          <img
+            src={brand.logoPath}
+            alt={brand.siteName}
+            className="h-10 w-auto max-w-[180px] object-contain object-left"
+          />
+        </div>
         <SidebarGroup>
-          <SidebarGroupLabel className="text-xs font-semibold text-muted-foreground uppercase tracking-wider">
+          <SidebarGroupLabel className="text-xs font-semibold uppercase tracking-widest text-white/70">
             {groupLabel}
           </SidebarGroupLabel>
           <SidebarGroupContent>

@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { pageTitle } from "@/lib/page-title";
 import { Trophy, Star, Target, TrendingUp, Award, Zap, BookOpen, Users } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -6,7 +7,7 @@ import { Progress } from "@/components/ui/progress";
 
 const StudentAchievements = () => {
   useEffect(() => {
-    document.title = "Достижения — Ученик | Ability School";
+    document.title = pageTitle("Достижения — Ученик");
   }, []);
 
   const achievements = [
@@ -54,9 +55,9 @@ const StudentAchievements = () => {
 
   const stats = [
     { label: "Общие баллы", value: "365", icon: Star, color: "text-yellow-600" },
-    { label: "Достижения", value: "12", icon: Trophy, color: "text-blue-600" },
-    { label: "Уровень", value: "8", icon: TrendingUp, color: "text-green-600" },
-    { label: "Рейтинг", value: "3/25", icon: Target, color: "text-purple-600" }
+    { label: "Достижения", value: "12", icon: Trophy, color: "text-brand" },
+    { label: "Уровень", value: "8", icon: TrendingUp, color: "text-emerald-600" },
+    { label: "Рейтинг", value: "3/25", icon: Target, color: "text-brand" }
   ];
 
   return (
@@ -91,9 +92,9 @@ const StudentAchievements = () => {
 
       {/* Progress Overview */}
       <div className="grid md:grid-cols-2 gap-6">
-        <div className="p-6 rounded-xl border bg-gradient-to-br from-blue-50 to-blue-100">
+        <div className="p-6 rounded-xl border bg-purple-50 border border-purple-100">
           <h3 className="font-semibold mb-4 flex items-center gap-2">
-            <TrendingUp className="w-4 h-4 text-blue-600" />
+            <TrendingUp className="w-4 h-4 text-brand" />
             Прогресс недели
           </h3>
           <div className="space-y-3">
@@ -121,18 +122,18 @@ const StudentAchievements = () => {
           </div>
         </div>
 
-        <div className="p-6 rounded-xl border bg-gradient-to-br from-green-50 to-green-100">
+        <div className="p-6 rounded-xl border bg-purple-50/90 border border-purple-100">
           <h3 className="font-semibold mb-4 flex items-center gap-2">
-            <Zap className="w-4 h-4 text-green-600" />
+            <Zap className="w-4 h-4 text-emerald-600" />
             Последние активности
           </h3>
           <div className="space-y-3 text-sm">
             <div className="flex items-center gap-2">
-              <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+              <div className="w-2 h-2 bg-emerald-500 rounded-full"></div>
               <span>Решил 5 задач по математике</span>
             </div>
             <div className="flex items-center gap-2">
-              <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
+              <div className="w-2 h-2 bg-brand rounded-full"></div>
               <span>Прочитал главу по истории</span>
             </div>
             <div className="flex items-center gap-2">
@@ -165,7 +166,7 @@ const StudentAchievements = () => {
                   
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-2">
-                      <BookOpen className="w-3 h-3 text-blue-600" />
+                      <BookOpen className="w-3 h-3 text-brand" />
                       <span className="text-xs text-muted-foreground">{achievement.category}</span>
                     </div>
                     <span className="text-xs text-muted-foreground">{achievement.date}</span>
@@ -188,9 +189,9 @@ const StudentAchievements = () => {
       </div>
 
       {/* Next Goals */}
-      <div className="p-6 rounded-xl border bg-gradient-to-br from-purple-50 to-purple-100">
+      <div className="p-6 rounded-xl border border-purple-100 bg-purple-50 shadow-brand-shadow">
         <h3 className="font-semibold mb-4 flex items-center gap-2">
-          <Target className="w-4 h-4 text-purple-600" />
+          <Target className="w-4 h-4 text-brand" />
           Следующие цели
         </h3>
         <div className="grid md:grid-cols-3 gap-4">

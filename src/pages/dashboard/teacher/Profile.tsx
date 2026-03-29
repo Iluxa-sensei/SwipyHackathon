@@ -89,13 +89,13 @@ const TeacherProfile = () => {
         <div className="space-y-6">
             <div className="flex items-center justify-between">
                 <div>
-                    <h1 className="text-3xl font-bold text-gradient">Мой профиль</h1>
+                    <h1 className="text-3xl font-bold text-brand tracking-tight">Мой профиль</h1>
                     <p className="text-muted-foreground">Управление личной информацией и профессиональными данными</p>
                 </div>
                 <div className="flex gap-2">
                     {isEditing ? (
                         <>
-                            <Button onClick={handleSave} className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700">
+                            <Button onClick={handleSave} className="bg-brand hover:bg-brand-dark rounded-xl">
                                 <Save className="h-4 w-4 mr-2" />
                                 Сохранить
                             </Button>
@@ -137,7 +137,7 @@ const TeacherProfile = () => {
                                 <div className="relative">
                                     <Avatar className="h-24 w-24">
                                         <AvatarImage src="/placeholder.svg" alt="Аватар" />
-                                        <AvatarFallback className="text-lg avatar-gradient text-white">
+                                        <AvatarFallback className="text-lg bg-brand text-white">
                                             ЕС
                                         </AvatarFallback>
                                     </Avatar>
@@ -155,7 +155,7 @@ const TeacherProfile = () => {
                                     <h3 className="text-xl font-semibold">{formData.firstName} {formData.lastName}</h3>
                                     <p className="text-muted-foreground">Учитель математики</p>
                                     <div className="flex gap-2">
-                                        <Badge variant="secondary" className="bg-green-100 text-green-800">
+                                        <Badge variant="secondary" className="bg-emerald-50 text-emerald-800">
                                             {formData.qualification}
                                         </Badge>
                                         <Badge variant="outline">
@@ -377,7 +377,7 @@ const TeacherProfile = () => {
                             <div className="space-y-4">
                                 {achievements.map((achievement) => (
                                     <div key={achievement.id} className="flex items-center gap-4 p-4 border rounded-lg">
-                                        <div className="h-12 w-12 rounded-full bg-gradient-to-br from-yellow-400 to-orange-500 flex items-center justify-center">
+                                        <div className="h-12 w-12 rounded-full bg-brand flex items-center justify-center">
                                             <Award className="h-6 w-6 text-white" />
                                         </div>
                                         <div className="flex-1">
